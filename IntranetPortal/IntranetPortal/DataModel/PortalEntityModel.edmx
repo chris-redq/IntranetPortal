@@ -824,7 +824,7 @@ warning 6002: The table/view 'IntranetPortal.dbo.LeadsAssignView2' does not have
           <Property Name="LotDem" Type="nvarchar" MaxLength="50" />
           <Property Name="Number" Type="nvarchar" MaxLength="50" />
           <Property Name="StreetName" Type="nvarchar" MaxLength="50" />
-          <Property Name="NeighName" Type="nvarchar" MaxLength="50" />
+          <Property Name="NeighName" Type="nvarchar" MaxLength="250" />
           <Property Name="NYCSqft" Type="float" />
           <Property Name="UnitNum" Type="nvarchar" MaxLength="50" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
@@ -842,6 +842,7 @@ warning 6002: The table/view 'IntranetPortal.dbo.LeadsAssignView2' does not have
           <Property Name="LastUpdate" Type="datetime" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="RecycleFrom" Type="nvarchar" MaxLength="256" />
+          <Property Name="LeadsTags" Type="nvarchar" MaxLength="512" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'IntranetPortal.dbo.TeamLeadsInZip' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -996,7 +997,8 @@ warning 6002: The table/view 'IntranetPortal.dbo.TeamLeadsInZip' does not have a
     [LeadsAssignView2].[AssignDate] AS [AssignDate], 
     [LeadsAssignView2].[LastUpdate] AS [LastUpdate], 
     [LeadsAssignView2].[CreateDate] AS [CreateDate], 
-    [LeadsAssignView2].[RecycleFrom] AS [RecycleFrom]
+    [LeadsAssignView2].[RecycleFrom] AS [RecycleFrom], 
+    [LeadsAssignView2].[LeadsTags] AS [LeadsTags]
     FROM [dbo].[LeadsAssignView2] AS [LeadsAssignView2]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="TeamLeadsInZip" EntityType="Self.TeamLeadsInZip" store:Type="Views" store:Schema="dbo">
@@ -1813,7 +1815,7 @@ warning 6002: The table/view 'IntranetPortal.dbo.TeamLeadsInZip' does not have a
           <Property Name="LotDem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NeighName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NeighName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="NYCSqft" Type="Double" />
           <Property Name="UnitNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
@@ -1831,6 +1833,7 @@ warning 6002: The table/view 'IntranetPortal.dbo.TeamLeadsInZip' does not have a
           <Property Name="LastUpdate" Type="DateTime" Precision="3" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="RecycleFrom" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LeadsTags" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MapDataSet">
           <Key>
@@ -2684,6 +2687,7 @@ warning 6002: The table/view 'IntranetPortal.dbo.TeamLeadsInZip' does not have a
           <EntitySetMapping Name="LeadsAssignView2">
             <EntityTypeMapping TypeName="IntranetPortalModel.LeadsAssignView2">
               <MappingFragment StoreEntitySet="LeadsAssignView2">
+                <ScalarProperty Name="LeadsTags" ColumnName="LeadsTags" />
                 <ScalarProperty Name="RecycleFrom" ColumnName="RecycleFrom" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />

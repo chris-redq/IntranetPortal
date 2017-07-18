@@ -86,7 +86,7 @@
             }
 
             var filterCondition = "";        
-            filterCondition = "[TypeText] LIKE '%" + key + "%'";
+            filterCondition = "[TypeText] LIKE '%" + key + "%' or [LeadsTags] LIKE '%" + key + "%'";
             //filterCondition += " OR [Neighborhood] LIKE '%" + key + "%'";
             gridLeads.ApplyFilter(filterCondition);
         }
@@ -230,6 +230,7 @@
                                             </DataItemTemplate>
                                         </dx:GridViewDataColumn>
                                         <dx:GridViewDataTextColumn FieldName="RecycleFrom" Caption="Agent" Width="70px"></dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataTextColumn FieldName="LeadsTags" Visible="false"></dx:GridViewDataTextColumn>
                                     </Columns>
                                     <SettingsBehavior AllowClientEventsOnLoad="true" AllowFocusedRow="true" EnableRowHotTrack="True" />
                                     <Settings ShowFilterRowMenu="true" ShowHeaderFilterButton="true" ShowColumnHeaders="true" GridLines="Both" VerticalScrollableHeight="1000"></Settings>

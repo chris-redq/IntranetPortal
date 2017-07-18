@@ -2570,7 +2570,6 @@ angular.module("PortalApp").factory("ptUnderwriting", ["$http", "ptCom", '$q', '
             },
             // try to a proxy incase signalr is reconnecting.        
             tryGetProxy: function () {
-                debugger;
                 var that = this;
                 if (!this.inited) this.tryInit();
                 return $q(function (resolve, reject) {

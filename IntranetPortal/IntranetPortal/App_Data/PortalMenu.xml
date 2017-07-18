@@ -404,6 +404,12 @@
           <![CDATA[<i class="fa fa-pencil"></i>]]>
         </FontClass>
       </PortalNavItem>
+      <PortalNavItem Name="UnderwriterProperties1" Text="Properties2" NavigationUrl="/underwriter/PropertiesList.aspx" ShowAmount="false">
+        <UserRoles>Underwriter,Sales-Executive</UserRoles>
+        <FontClass>
+          <![CDATA[<i class="fa fa-pencil"></i>]]>
+        </FontClass>
+      </PortalNavItem>
      <!-- <PortalNavItem Name="UnderwritingDocSearch" Text="Doc Search" NavigationUrl="/PopupControl/LeadTaxSearchRequest.aspx" ShowAmount="false">
         <UserRoles>Entity-Manager,Relation-Manager,Underwriter,Sales-Executive,DocSearch-Outside</UserRoles>
         <FontClass>

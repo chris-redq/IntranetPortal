@@ -37,5 +37,6 @@ Partial Public Class LeadsAssignView2
     Public Property LastUpdate As Nullable(Of Date)
     Public Property CreateDate As Nullable(Of Date)
     Public Property RecycleFrom As String
+    Public Property LeadsTags As String
 
 End Class
