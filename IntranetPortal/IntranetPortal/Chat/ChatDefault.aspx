@@ -103,8 +103,9 @@
     </style>
     <!--Script references. -->
 
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/signalr/jquery.signalR.min.js"></script>
+<%--    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/signalr/jquery.signalR.min.js"></script>--%>
+    <script src="/Scripts/vendor.js"></script>
     <script src="/signalr/hubs"></script>
 
 </head>

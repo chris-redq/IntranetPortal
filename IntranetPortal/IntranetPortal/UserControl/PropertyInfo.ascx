@@ -8,7 +8,7 @@
 <uc1:PreAssignPopup runat="server" ID="PreAssignPopup" />
 <%--@ Register Src="~/ShortSale/ShortSaleInLeadsView.ascx" TagPrefix="uc1" TagName="ShortSaleInLeadsView" --%>
 
-<script src="/bower_components/jquery-formatcurrency/jquery.formatCurrency-1.4.0.js"></script>
+<%--<script src="/bower_components/jquery-formatcurrency/jquery.formatCurrency-1.4.0.js"></script>--%>
 <script type="text/javascript">
     leadStatus = "";
     leadSubstatus = "";

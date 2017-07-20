@@ -3,8 +3,8 @@
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="http://cdn3.devexpress.com/jslib/15.1.6/css/dx.common.css" type="text/css" />
-    <link rel="stylesheet" href="http://cdn3.devexpress.com/jslib/15.1.6/css/dx.light.css" />
+<%--    <link rel="stylesheet" href="http://cdn3.devexpress.com/jslib/15.1.6/css/dx.common.css" type="text/css" />
+    <link rel="stylesheet" href="http://cdn3.devexpress.com/jslib/15.1.6/css/dx.light.css" />--%>
     <style>
         .nofoucs:focus {
             border: none !important;
@@ -14,9 +14,9 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="MainContentPH" runat="server">
 
-    <script src="/bower_components/globalize/lib/globalize.js"></script>
+<%--    <script src="/bower_components/globalize/lib/globalize.js"></script>
     <script src="http://cdn3.devexpress.com/jslib/15.1.6/js/dx.chartjs.js"></script>
-    <script src="http://cdn3.devexpress.com/jslib/15.1.6/js/dx.webappjs.js"></script>
+    <script src="http://cdn3.devexpress.com/jslib/15.1.6/js/dx.webappjs.js"></script>--%>
 
     <div class="container-fluid">
         <%--Head--%>

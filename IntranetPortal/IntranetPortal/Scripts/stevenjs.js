@@ -95,8 +95,8 @@ PortalUtility = {
     }
 }
 
-if (typeof $().formatCurrency != 'function') {
-    $.getScript("/bower_components/jquery-formatcurrency/jquery.formatCurrency-1.4.0.js");
+if (typeof $.formatCurrency != 'function') {
+    $.getScript("https://bowercdn.net/c/jquery-formatcurrency-1.4.0/jquery.formatCurrency-1.4.0.min.js");
 }
 function clickCollapse(e) {
 

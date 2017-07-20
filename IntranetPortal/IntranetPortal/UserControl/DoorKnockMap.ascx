@@ -12,7 +12,7 @@
     }
 </style>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-<script src="/bower_components/prototypejs/dist/prototype.min.js" type="text/javascript"></script>
+<%--<script src="/bower_components/prototypejs/dist/prototype.min.js" type="text/javascript"></script>--%>
 <script>
 
     var rendererOptions = {
@@ -136,8 +136,9 @@
 
     function get_selected_row() {
         var selected_row = null;
-        $$('#target_table tr').each(function (row) {
-            if (row.hasClassName('selected')) {
+        var rows = $('#target_table tr');
+        $.each(rows, function (row) {
+            if (row.hasClass('selected')) {
                 selected_row = row;
                 throw $break;
             }

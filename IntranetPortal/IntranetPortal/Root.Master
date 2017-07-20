@@ -10,29 +10,32 @@
 <head id="Head1" runat="server">
     <title>Agent Portal (beta) - My Ideal Property</title>
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <%--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />--%>
+    <link rel="stylesheet" href="/css/vendor.css" />
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/stevencss.css?v=2017522" />
-    <link rel="stylesheet" href="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" />
+<%--<link rel="stylesheet" href="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" />--%>
+  
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>--%>
+    
+    <script src="/Scripts/vendor.js"></script>
 
+<%--    <script src="/bower_components/modernizr/modernizr.js"></script>
     <script src="/bower_components/jquery-easing/jquery.easing.min.js"></script>
     <script src="/bower_components/jquery-smartresize/jquery.debouncedresize.js"></script>
     <script src="/bower_components/jquery-smartresize/jquery.throttledresize.js"></script>
-    <script src="/bower_components/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-    <script src="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js"></script>
+    <script src="/bower_components/jquery-mousewheel/jquery.mousewheel.min.js"></script>--%>
+    <%--<script src="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js"></script>--%>
 
     <script src="/Scripts/PortalMessager.js"></script>
     <script src="/Scripts/stevenjs.js?v=2017522"></script>
-
-
+    
 
     <style type="text/css">
         html, body, #form1 {
@@ -306,7 +309,7 @@
                         <p>
                             Application Version:<dx:ASPxLabel ID="lblVersion" runat="server" ForeColor="#446576" Font-Size="12px"></dx:ASPxLabel>
                         </p>
-                        <p>&copy; 2014 My Ideal Property</p>
+                        <p>&copy; <%= DateTime.Now.Year.ToString() %> My Ideal Property</p>
                         <div id="errorMsg" style="color: transparent"></div>
                     </footer>
                 </div>
