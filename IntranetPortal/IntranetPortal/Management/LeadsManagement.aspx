@@ -172,6 +172,11 @@
                                                 <option value="TaxLien">Tax Lien</option>
                                                 <option value="VacantLand">Vacan Leads</option>
                                                 <option value="Deceased">Deceased</option>
+                                                <% If Not String.IsNullOrEmpty(IntranetPortal.Core.PortalSettings.GetValue("CustomTags"))  %>
+                                                <% for Each tag In IntranetPortal.Core.PortalSettings.GetValue("CustomTags").Split(";") %>
+                                                   <option value="<%= tag %>"><%= tag %></option>
+                                                <% Next %>
+                                                <% End If %>
                                             </select>
                                         </span>
                                         <div style="float: right">
