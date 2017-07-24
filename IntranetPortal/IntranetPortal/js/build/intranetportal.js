@@ -2604,7 +2604,7 @@ angular.module("PortalApp").factory("ptUnderwriting", ["$http", "ptCom", '$q', '
                 setTimeout(function () {
                     if (!that.proxy) console.log("Fail to init proxy");
                     clearInterval(proxyInterval);
-                }, 2000);
+                }, 10000);
             }
         }
 
