@@ -22,6 +22,7 @@ var angularPath = [
 ];
 var remoteVendor = [
     "//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js",
+    "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js",
     "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js",
     "//cdnjs.cloudflare.com/ajax/libs/globalize/0.1.1/globalize.min.js",
     "//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js",
@@ -37,8 +38,7 @@ var remoteVendor = [
     "//cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.12.1/select.min.js",
     "//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js",
     "//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js",
-    "//cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js",
-    "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"
+    "//cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js"
 ];
 var vendorjs = [
     "bower_components/moment/min/moment.min.js",

@@ -2770,6 +2770,7 @@
     <Content Include="EmailTemplate\TeamActivityReport.aspx" />
     <Content Include="EmailTemplate\Testing.ascx" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GPAOffer\GPAOfferDetail.aspx" />
     <Content Include="gulpfile.js" />
     <Content Include="images\1_down_picto.png" />
@@ -2955,6 +2956,10 @@
     <Content Include="js\models\CorpEntity.js" />
     <Content Include="js\models\DivError.js" />
     <Content Include="js\models\Employee.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="js\models\Underwriter js.bak" />
     <Content Include="js\services\ptUnderwriting.js" />
     <Content Include="js\models\UnderwritingRequest.js" />
