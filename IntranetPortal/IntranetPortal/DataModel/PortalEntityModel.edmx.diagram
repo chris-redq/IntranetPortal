@@ -63,6 +63,7 @@
         <EntityTypeShape EntityType="IntranetPortalModel.TLOData" Width="1.5" PointX="7.5" PointY="20.375" />
         <EntityTypeShape EntityType="IntranetPortalModel.HomeOwnerPhone" Width="1.5" PointX="23.375" PointY="0.75" />
         <EntityTypeShape EntityType="IntranetPortalModel.PortalLisPen" Width="1.5" PointX="10.75" PointY="10.25" />
+        <EntityTypeShape EntityType="IntranetPortalModel.PortalLeadsView" Width="2.125" PointX="5.375" PointY="23.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

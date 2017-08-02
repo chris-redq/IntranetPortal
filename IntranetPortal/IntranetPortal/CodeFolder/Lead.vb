@@ -239,6 +239,29 @@ Partial Public Class Lead
         End Using
     End Function
 
+    Public Shared Function GetLeadsPortalStatus(bbles As List(Of String)) As Object
+        Using ctx As New Entities
+            For Each bbl In bbles.Distinct
+                Dim li = ctx.LeadsInfoes.Find(bbl)
+                If li Is Nothing AndAlso Not ctx.LeadsInfoes.Local.Any(Function(a) a.BBLE = bbl) Then
+                    li = New LeadsInfo
+                    li.BBLE = bbl
+                    li.CreateDate = DateTime.Now
+                    li.CreateBy = "System"
+                    ctx.LeadsInfoes.Add(li)
+                End If
+            Next
+
+            ctx.SaveChanges()
+
+            Dim result = From pv In ctx.PortalLeadsViews
+                         Where bbles.Contains(pv.BBLE)
+                         Select pv
+
+            Return result.ToList
+        End Using
+    End Function
+
     Public Shared Function CreateLeads(bble As String, status As LeadStatus, createBy As String) As Lead
 
         Using ctx As New Entities

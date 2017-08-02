@@ -563,6 +563,7 @@
     <Compile Include="CodeFolder\PropertyServiceProvider.vb" />
     <Compile Include="CodeFolder\PublicSiteService.vb" />
     <Compile Include="CodeFolder\RecycleManage.vb" />
+    <Compile Include="CodeFolder\RemoteLeadsQuery.vb" />
     <Compile Include="CodeFolder\RoleBasePage.vb">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -891,6 +892,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PortalEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\PortalLeadsView.vb">
+      <DependentUpon>PortalEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\PortalLisPen.vb">
       <DependentUpon>PortalEntityModel.tt</DependentUpon>
     </Compile>
@@ -1189,6 +1193,13 @@
     </Compile>
     <Compile Include="Management\DialerManagement.aspx.vb">
       <DependentUpon>DialerManagement.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Management\LeadsAssign.aspx.designer.vb">
+      <DependentUpon>LeadsAssign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\LeadsAssign.aspx.vb">
+      <DependentUpon>LeadsAssign.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Module\CacheAvoidModule.vb" />
@@ -2911,6 +2922,7 @@
     <Content Include="js\controllers\ConstructionController.js" />
     <Content Include="js\controllers\DocSearchController.js" />
     <Content Include="js\controllers\GPAOfferDetailController.js" />
+    <Content Include="js\controllers\LeadsAssignController.js" />
     <Content Include="js\controllers\LegalController.js" />
     <Content Include="js\controllers\MainController.js" />
     <Content Include="js\controllers\PreSignController.js" />
@@ -3031,6 +3043,7 @@
     <Content Include="LeadDocSearch\DocSearchOldVersion.ascx" />
     <Content Include="LeadDocSearch\DocSearchSummary.aspx" />
     <Content Include="LeadDocSearch\LeadDocSearchList.ascx" />
+    <Content Include="Management\LeadsAssign.aspx" />
     <Content Include="PropertyNote\PropertyNoteList.aspx" />
     <Content Include="Scripts\vendor.js" />
     <Content Include="Underwriter\DocSearch.aspx" />

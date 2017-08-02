@@ -845,6 +845,26 @@ warning 6002: The table/view 'IntranetPortal.dbo.LeadsAssignView2' does not have
           <Property Name="LeadsTags" Type="nvarchar" MaxLength="512" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'IntranetPortal.dbo.PortalLeadsView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PortalLeadsView">
+          <Key>
+            <PropertyRef Name="BBLE" />
+            <PropertyRef Name="InPortal" />
+          </Key>
+          <Property Name="BBLE" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="PropertyAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="InPortal" Type="int" Nullable="false" />
+          <Property Name="LeadsName" Type="nvarchar" MaxLength="120" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserActive" Type="bit" />
+          <Property Name="Team" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssignDate" Type="datetime" />
+          <Property Name="LastUpdate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'IntranetPortal.dbo.TeamLeadsInZip' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TeamLeadsInZip">
           <Key>
@@ -858,6 +878,9 @@ warning 6002: The table/view 'IntranetPortal.dbo.TeamLeadsInZip' does not have a
           <Property Name="LeadsSatus" Type="nvarchar" MaxLength="50" />
           <Property Name="LeadsName" Type="nvarchar" MaxLength="120" />
         </EntityType>
+        <Function Name="ExecuteRemoteLeadsQuery" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="query" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="UpdateEmployeeName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="OldName" Type="nvarchar" Mode="In" />
           <Parameter Name="NewName" Type="nvarchar" Mode="In" />
@@ -1001,6 +1024,22 @@ warning 6002: The table/view 'IntranetPortal.dbo.TeamLeadsInZip' does not have a
     [LeadsAssignView2].[LeadsTags] AS [LeadsTags]
     FROM [dbo].[LeadsAssignView2] AS [LeadsAssignView2]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="PortalLeadsView" EntityType="Self.PortalLeadsView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PortalLeadsView].[BBLE] AS [BBLE], 
+    [PortalLeadsView].[PropertyAddress] AS [PropertyAddress], 
+    [PortalLeadsView].[InPortal] AS [InPortal], 
+    [PortalLeadsView].[LeadsName] AS [LeadsName], 
+    [PortalLeadsView].[EmployeeID] AS [EmployeeID], 
+    [PortalLeadsView].[EmployeeName] AS [EmployeeName], 
+    [PortalLeadsView].[UserActive] AS [UserActive], 
+    [PortalLeadsView].[Team] AS [Team], 
+    [PortalLeadsView].[Status] AS [Status], 
+    [PortalLeadsView].[StatusName] AS [StatusName], 
+    [PortalLeadsView].[AssignDate] AS [AssignDate], 
+    [PortalLeadsView].[LastUpdate] AS [LastUpdate]
+    FROM [dbo].[PortalLeadsView] AS [PortalLeadsView]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="TeamLeadsInZip" EntityType="Self.TeamLeadsInZip" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [TeamLeadsInZip].[BBLE] AS [BBLE], 
@@ -1096,6 +1135,10 @@ warning 6002: The table/view 'IntranetPortal.dbo.TeamLeadsInZip' does not have a
           <EntitySet Name="TLODatas" EntityType="IntranetPortalModel.TLOData" />
           <EntitySet Name="HomeOwnerPhones" EntityType="IntranetPortalModel.HomeOwnerPhone" />
           <EntitySet Name="PortalLisPens" EntityType="IntranetPortalModel.PortalLisPen" />
+          <EntitySet Name="PortalLeadsViews" EntityType="IntranetPortalModel.PortalLeadsView" />
+          <FunctionImport Name="RemoteLeadsQuery" ReturnType="Collection(String)">
+            <Parameter Name="query" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Employee">
           <Key>
@@ -2008,6 +2051,24 @@ warning 6002: The table/view 'IntranetPortal.dbo.TeamLeadsInZip' does not have a
           <Property Name="CollectedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="PortalLeadsView">
+          <Key>
+            <PropertyRef Name="BBLE" />
+            <PropertyRef Name="InPortal" />
+          </Key>
+          <Property Name="BBLE" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="PropertyAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="InPortal" Type="Int32" Nullable="false" />
+          <Property Name="LeadsName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserActive" Type="Boolean" />
+          <Property Name="Team" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssignDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2900,6 +2961,25 @@ warning 6002: The table/view 'IntranetPortal.dbo.TeamLeadsInZip' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PortalLeadsViews">
+            <EntityTypeMapping TypeName="IntranetPortalModel.PortalLeadsView">
+              <MappingFragment StoreEntitySet="PortalLeadsView">
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="AssignDate" ColumnName="AssignDate" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Team" ColumnName="Team" />
+                <ScalarProperty Name="UserActive" ColumnName="UserActive" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="LeadsName" ColumnName="LeadsName" />
+                <ScalarProperty Name="InPortal" ColumnName="InPortal" />
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="BBLE" ColumnName="BBLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="RemoteLeadsQuery" FunctionName="IntranetPortalModel.Store.ExecuteRemoteLeadsQuery" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

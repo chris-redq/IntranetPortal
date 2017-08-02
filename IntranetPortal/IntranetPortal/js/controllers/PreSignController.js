@@ -259,7 +259,7 @@ function ($scope, ptCom, PreSignItem, DxGridModel, $location, PortalHttpIntercep
     $scope.preAssign.CreateBy = $scope.preAssign.CreateBy || $('#currentUser').val();
     $scope.preAssign.CheckRequestData = $scope.preAssign.CheckRequestData || { Type: 'Short Sale', Checks: [] };
     if ($scope.preAssign.$promise) {
-        $scope.preAssign.$promise.then(function() {
+        $scope.preAssign.$promise.then(function () {
             if (!$scope.preAssign.Id) {
                 $scope.preAssign.CheckRequestData = { Type: 'Short Sale', Checks: [] };
                 $scope.preAssign.Parties = [];
@@ -267,6 +267,14 @@ function ($scope, ptCom, PreSignItem, DxGridModel, $location, PortalHttpIntercep
                 $scope.preAssign.NeedCheck = true;
             }
         });
+    }
+    else {
+        if (!$scope.preAssign.Id) {
+            $scope.preAssign.CheckRequestData = { Type: 'Short Sale', Checks: [] };
+            $scope.preAssign.Parties = [];
+            $scope.preAssign.NeedSearch = true;
+            $scope.preAssign.NeedCheck = true;
+        }
     }
 
     // debugger;
