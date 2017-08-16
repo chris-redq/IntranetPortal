@@ -40,7 +40,7 @@
     <link rel="stylesheet" onerror="onCssCdnError(this)" data-fallback="/css/dx.light.css" href="https://cdn3.devexpress.com/jslib/16.1.6/css/dx.light.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.12.1/select.min.css" />
-<%--    <link rel="stylesheet" href="/bower_components/angular-ui-layout/src/ui-layout.css" />
+    <%--<link rel="stylesheet" href="/bower_components/angular-ui-layout/src/ui-layout.css" />
     <link rel="stylesheet" href="/bower_components/angular-animate-css/build/nga.min.css" />
     <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css" />--%>
     <link rel="stylesheet" href="/css/vendor.css" />

@@ -22,7 +22,7 @@ var angularPath = [
 ];
 var remoteVendor = [
     "//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js",
-    "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js",
+    //"//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js",
     "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js",
     "//cdnjs.cloudflare.com/ajax/libs/globalize/0.1.1/globalize.min.js",
     "//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js",

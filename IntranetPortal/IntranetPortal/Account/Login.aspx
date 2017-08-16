@@ -24,7 +24,12 @@
     <script src="/bower_components/jquery-backstretch/jquery.backstretch.min.js"></script>--%>
     <script src="/Scripts/vendor.js"></script>
     <script src="/Scripts/stevenjs.js"></script>
-
+    <style type="text/css">
+        * {
+            -webkit-box-sizing:content-box;
+            box-sizing:content-box;
+        }
+    </style>
     <script>
         function onLogIn() {
             if ($('#username').val().length == 0 || $('#password').val().length == 0) {

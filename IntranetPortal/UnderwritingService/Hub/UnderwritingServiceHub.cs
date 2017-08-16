@@ -17,7 +17,6 @@ namespace RedQ.UnderwritingService.Hub
 
         public Context DebugRule(UnderwritingInput input) {
             return UnderwritingService.Services.UnderwritingService.DebugRule(input);
-
         }
 
         public Underwriting PostUnderwriting(Underwriting underwriting, string username)
@@ -29,7 +28,6 @@ namespace RedQ.UnderwritingService.Hub
         {
             UnderwritingDAO.SaveOrUpdate(underwriting, username);
             return UnderwritingDAO.Archive(underwriting.BBLE, username, archiveNote);
-
         }
 
         public IEnumerable<UnderwritingArchived> GetArchivedListByBBLE(string bble)

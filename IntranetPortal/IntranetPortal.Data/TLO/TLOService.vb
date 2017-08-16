@@ -7,8 +7,8 @@ Imports Newtonsoft.Json.Serialization
 ''' </summary>
 Public Class TLOService
 
-    Const TloUser As String = "prodapi.myidealprop"
-    Const TloPassword As String = "gc5Wyz-MStb?_!CRFkmQD"
+    Shared ReadOnly TloUser As String = System.Configuration.ConfigurationManager.AppSettings("TloUser")
+    Shared ReadOnly TloPassword As String = Configuration.ConfigurationManager.AppSettings("TloPassword")
 
     ''' <summary>
     ''' Return person data

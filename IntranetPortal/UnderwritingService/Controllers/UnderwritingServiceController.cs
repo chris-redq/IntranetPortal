@@ -17,6 +17,5 @@ namespace RedQ.UnderwritingService.Controllers
         {
             return UnderwritingService.Services.UnderwritingService.ApplyRule(input);
         }
-
     }
 }

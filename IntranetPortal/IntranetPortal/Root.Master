@@ -229,11 +229,11 @@
                     '</div>';
                 var $div = $(div);
                 $('#divMsgTest').parent().append($div);
-                $div.draggable({
-                    handle: ".header",
-                    stop: function () {
-                    }
-                });
+                //$div.draggable({
+                //    handle: ".header",
+                //    stop: function () {
+                //    }
+                //});
 
                 $div.find('#imgDelete').click(function () {
                     var ctrId = 'divChat';

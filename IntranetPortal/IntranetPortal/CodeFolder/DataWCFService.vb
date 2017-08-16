@@ -23,10 +23,10 @@ Public Class DataWCFService
             Return Nothing
         End If
 
-        Using client As New DataAPI.WCFMacrosClient
-            Dim result = GetLocateReport(apiOrderNum, bble, owner.Name, owner.Address1, owner.Address2, owner.City, owner.State, owner.Zip, owner.Country)
+        Dim result = GetLocateReport(apiOrderNum, bble, owner.Name, owner.Address1, owner.Address2, owner.City, owner.State, owner.Zip, owner.Country)
 
-            If result Is Nothing Then
+        If Not TLOServiceEnabled AndAlso result Is Nothing Then
+            Using client As New DataAPI.WCFMacrosClient
                 Dim propOwners = client.NYC_NameAndAddress(bble)
                 If propOwners IsNot Nothing And propOwners.Count > 0 Then
                     Dim newAds = propOwners(0)
@@ -35,10 +35,11 @@ Public Class DataWCFService
                         result = GetLocateReport(apiOrderNum, bble, owner.Name, add1, newAds.Mail_ST2, newAds.Mail_City, newAds.Mail_State, newAds.Mail_Zip, "US")
                     End If
                 End If
-            End If
+                Return result
+            End Using
+        End If
 
-            Return result
-        End Using
+        Return result
     End Function
     Public Shared Function GetLocateReport2(apiOrderNum As Integer, bble As String, owner As HomeOwner) As DataAPI.TLOLocateReportOutput
         If String.IsNullOrEmpty(owner.Address1) AndAlso String.IsNullOrEmpty(owner.Address2) AndAlso String.IsNullOrEmpty(owner.City) Then

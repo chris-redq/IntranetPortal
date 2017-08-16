@@ -411,8 +411,9 @@
                             </div>
                         </div>
                         <% i += 1%>
-                        <asp:HiddenField ID="hfBBLE" runat="server" />
                         -->
+                        <asp:HiddenField ID="hfBBLE" runat="server" />
+                     
 
                         <% For Each comment In LeadsInfoData.UserComments%>
                         <div class="note_item" style='<%= If((i mod 2)=0,"background: #e8e8e8","")%>'>
