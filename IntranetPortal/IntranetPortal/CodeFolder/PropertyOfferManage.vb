@@ -800,10 +800,34 @@ Public Class DocumentGenerator
         file.PlaceHolders.Add(New DocumentPlaceHolder("LOT"))
         file.PlaceHolders.Add(New DocumentPlaceHolder("DAY"))
         file.PlaceHolders.Add(New DocumentPlaceHolder("MONTH"))
+        file.PlaceHolders.Add(New DocumentPlaceHolder("YEAR"))
         file.PlaceHolders.Add(New DocumentPlaceHolder("SELLERNAMES", Function(data As JObject)
                                                                          Dim names = data.SelectToken("DealSheet.ContractOrMemo.Sellers").Select(Function(s) s.SelectToken("Name").ToString).Where(Function(s) Not String.IsNullOrEmpty(s)).ToArray
                                                                          Return String.Join(" & ", names)
                                                                      End Function))
+        _fileConfigures.Add(file)
+
+        'Restrictive declaration
+        file = New GenerateFileConfig With {.FileName = "RestrictiveDeclaration.docx", .ConfigKey = "RestrictiveDeclaration"}
+        phs = {
+            New DocumentPlaceHolder("DAY"),
+            New DocumentPlaceHolder("MONTH"),
+            New DocumentPlaceHolder("YEAR"),
+            New DocumentPlaceHolder("BLOCK"),
+            New DocumentPlaceHolder("LOT"),
+            New DocumentPlaceHolder("SELLERNAMES", Function(data As JObject)
+                                                       Dim names = data.SelectToken("DealSheet.ContractOrMemo.Sellers").Select(Function(s) s.SelectToken("Name").ToString).Where(Function(s) Not String.IsNullOrEmpty(s)).ToArray
+                                                       Return String.Join(" & ", names)
+                                                   End Function),
+            New DocumentPlaceHolder("SELLERADDRESS", "DealSheet.ContractOrMemo.Sellers[0].Address"),
+            New DocumentPlaceHolder("BUYERNAME", "DealSheet.ContractOrMemo.Buyers[0].Name"),
+            New DocumentPlaceHolder("BUYERADDRESS", "DealSheet.ContractOrMemo.Buyers[0].Address"),
+            New DocumentPlaceHolder("PROPERTYADDRESS", "DealSheet.ContractOrMemo.PropertyAddress"),
+            New DocumentPlaceHolder("SELLER1NAME", "DealSheet.ContractOrMemo.Sellers[0].Name"),
+            New DocumentPlaceHolder("SELLER2NAME", "DealSheet.ContractOrMemo.Sellers[1].Name"),
+            New DocumentPlaceHolder("SELLER3NAME", "DealSheet.ContractOrMemo.Sellers[2].Name")
+            }
+        file.PlaceHolders = phs.ToList
         _fileConfigures.Add(file)
 
         'Acris info

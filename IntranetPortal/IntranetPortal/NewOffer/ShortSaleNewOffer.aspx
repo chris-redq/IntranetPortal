@@ -309,6 +309,12 @@
                                         <div dx-check-box="{ bindingOptions: { value: 'DeadType.ShortSale' }}"></div>
                                     </div>
                                 </div>
+                                <div class="dx-field">
+                                    <div class="dx-field-label">Restrictive Declaration</div>
+                                    <div class="dx-field-value">
+                                        <div dx-check-box="{ bindingOptions: { value: 'DeadType.RestrictiveDeclaration' }}"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -332,7 +338,7 @@
                                      <div class="ss_border" style="border-top-color: transparent">
                                          <div >
                                             <h4 class="ss_form_title">Seller {{$index+1}} </h4>
-                                            <div >
+                                            <div>
                                                 <ul class="ss_form_box clearfix">
                                                     <li class="ss_form_item">
                                                         <label class="ss_form_input_title" ng-class="{ss_warning:!d.Name}" data-message="Please fill Seller {{$index+1}} Name">Seller {{$index+1}} Name</label><input class="ss_form_input" ng-model="d.Name" /></li>                                                    
