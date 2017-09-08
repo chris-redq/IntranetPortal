@@ -3,6 +3,8 @@ Public Class BusinessDataBase
 
     Public Property Name As String
 
+    Public Property Loaded As Boolean
+
     Public Overridable Sub LogSave(saveBy As String)
 
     End Sub

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/stevencss.css?v=2017522" />
+    <link rel="stylesheet" href="/css/stevencss.css?v=201798" />
 <%--<link rel="stylesheet" href="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" />--%>
   
 
@@ -34,7 +34,7 @@
     <%--<script src="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js"></script>--%>
 
     <script src="/Scripts/PortalMessager.js"></script>
-    <script src="/Scripts/stevenjs.js?v=2017522"></script>
+    <script src="/Scripts/stevenjs.js?v=201798"></script>
     
 
     <style type="text/css">

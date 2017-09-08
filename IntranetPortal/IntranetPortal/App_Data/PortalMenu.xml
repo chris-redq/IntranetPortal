@@ -398,12 +398,12 @@
           <![CDATA[<i class="fa fa-university"></i>]]>
         </FontClass>
       </PortalNavItem>
-      <PortalNavItem Name="UnderwriterProperties1" Text="Properties" NavigationUrl="/underwriter/DocSearchList.aspx" ShowAmount="false">
+      <!--<PortalNavItem Name="UnderwriterProperties1" Text="Properties" NavigationUrl="/underwriter/DocSearchList.aspx" ShowAmount="false">
         <UserRoles>Underwriter,Sales-Executive</UserRoles>
         <FontClass>
           <![CDATA[<i class="fa fa-pencil"></i>]]>
         </FontClass>
-      </PortalNavItem>
+      </PortalNavItem>-->
       <PortalNavItem Name="UnderwriterProperties1" Text="Properties2" NavigationUrl="/underwriter/PropertiesList.aspx" ShowAmount="false">
         <UserRoles>Underwriter,Sales-Executive</UserRoles>
         <FontClass>

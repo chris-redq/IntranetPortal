@@ -8265,6 +8265,7 @@ portalApp.controller('shortSalePreSignCtrl', function ($scope, ptCom, $http,
     }
 
     $scope.onAssignCorpSuccessed = function (data) {
+        debugger;
         $scope.SSpreSign.Status = 1;
         /*should save to data base*/
         $scope.constractFromData();
@@ -9137,6 +9138,7 @@ angular.module("PortalApp").controller("UnderwritingController", [
                     }
                 });
         };
+
         // Snapshot current values of forms, and sava copy in database for future analysis
         $scope.archiveFunc = function () {
             ptCom.prompt("Please give a name to this archive.",
