@@ -8264,8 +8264,7 @@ portalApp.controller('shortSalePreSignCtrl', function ($scope, ptCom, $http,
         return true;
     }
 
-    $scope.onAssignCorpSuccessed = function (data) {
-        debugger;
+    $scope.onAssignCorpSuccessed = function (data) {        
         $scope.SSpreSign.Status = 1;
         /*should save to data base*/
         $scope.constractFromData();
