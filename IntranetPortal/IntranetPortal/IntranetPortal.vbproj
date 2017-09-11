@@ -2972,6 +2972,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="App_Data\OfferDoc\RestrictiveDeclaration.docx" />
     <None Include="js\models\Underwriter js.bak" />
     <Content Include="js\services\ptUnderwriting.js" />
     <Content Include="js\models\UnderwritingRequest.js" />
@@ -3531,6 +3532,7 @@
     <Content Include="App_Data\test.csv" />
     <Content Include="Underwriter\UnderwritingTracking.aspx" />
     <Content Include="Webconfig.txt" />
+    <None Include="My Project\PublishProfiles\local.pubxml" />
     <None Include="Scripts\x_references.js" />
     <Content Include="ShortSale\CaseParties.aspx" />
     <Content Include="ShortSale\GeneralParties.ascx" />
