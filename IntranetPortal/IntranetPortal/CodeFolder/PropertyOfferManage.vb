@@ -647,6 +647,8 @@ Public Class DocumentGenerator
         file.PlaceHolders.Add(New DocumentPlaceHolder("BUYERATTORNEYADDRESS", "DealSheet.ContractOrMemo.Buyer.buyerAttorneyObj.Office"))
         file.PlaceHolders.Add(New DocumentPlaceHolder("BUYERATTORNEYTEL", "DealSheet.ContractOrMemo.Buyer.buyerAttorneyObj.OfficeNO"))
         file.PlaceHolders.Add(New DocumentPlaceHolder("BUYERATTORNEYFAX", "DealSheet.ContractOrMemo.Buyer.buyerAttorneyObj.Fax"))
+
+        file.PlaceHolders.Add(New DocumentPlaceHolder("BUYERSIGNER", "DealSheet.ContractOrMemo.Buyer.Signer"))
         _fileConfigures.Add(file)
 
         'Deed 
@@ -820,9 +822,9 @@ Public Class DocumentGenerator
                                                        Return String.Join(" & ", names)
                                                    End Function),
             New DocumentPlaceHolder("SELLERADDRESS", "DealSheet.ContractOrMemo.Sellers[0].Address"),
-            New DocumentPlaceHolder("BUYERNAME", "DealSheet.ContractOrMemo.Buyers[0].Name"),
-            New DocumentPlaceHolder("BUYERADDRESS", "DealSheet.ContractOrMemo.Buyers[0].Address"),
-            New DocumentPlaceHolder("PROPERTYADDRESS", "DealSheet.ContractOrMemo.PropertyAddress"),
+            New DocumentPlaceHolder("BUYERNAME", "DealSheet.ContractOrMemo.Buyer.CorpName"),
+            New DocumentPlaceHolder("BUYERADDRESS", "DealSheet.ContractOrMemo.Buyer.Address"),
+            New DocumentPlaceHolder("PROPERTYADDRESS", "PropertyAddress"),
             New DocumentPlaceHolder("SELLER1NAME", "DealSheet.ContractOrMemo.Sellers[0].Name"),
             New DocumentPlaceHolder("SELLER2NAME", "DealSheet.ContractOrMemo.Sellers[1].Name"),
             New DocumentPlaceHolder("SELLER3NAME", "DealSheet.ContractOrMemo.Sellers[2].Name")
