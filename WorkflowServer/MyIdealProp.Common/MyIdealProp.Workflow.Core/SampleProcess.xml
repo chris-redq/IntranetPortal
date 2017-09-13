@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Process Name="TestProcess">
+  <DataFields>
+    <DataField Name="Name" Type="System.String" Scope="Process" DefaultValue="test"></DataField>
+    <DataField Name="Result" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+  </DataFields>
+  <Lines>
+    <Line Name="DraftInitial" From="Start" To="ManagerApproval" CodeRule="LineRule1">
+    </Line>
+    <Line Name="MgrApprove" From="ManagerApproval" To="Approved" CodeRule="LineRule2">
+    </Line>
+    <Line Name="MgrDecline" From="ManagerApproval" To="Declined" CodeRule="LineRule3">
+    </Line>
+  </Lines>
+  <Activities>
+    <Activity Name="Start" IsInitial="True">    
+    </Activity>
+    <Activity Name="ManagerApproval">
+      <DataFields>
+        <DataField Name="Result" Type="System.String" Scope="Activity" DefaultValue=""></DataField>
+      </DataFields>
+      <Rules>
+        <EscalationRule>
+          <Escalation Name="Mail" DueTime="0.00:1:00" Action="MgrEscalationRule" Repeat="0"></Escalation>
+        </EscalationRule>
+        <DestinationRule>
+          <Destination Type="User" Name="123"></Destination>
+          <Destination Type="User" Name="Chris Yan"></Destination>
+        </DestinationRule>
+        <SuccessRule Name="Success" CodeRule="ManagerApprovalSuccessRule">
+        </SuccessRule>
+      </Rules>
+      <Events>
+        <ClientEvent Name="eventName" Order="1" EventAction="ManagerApproval">
+        </ClientEvent>
+      </Events>
+    </Activity>
+    <Activity Name="Declined">
+      <Rules>        
+      </Rules>
+      <Events>
+        <ServerEvent Name="Declined" Type="Server" Order="1" EventAction="Declined">
+        </ServerEvent>
+      </Events>
+    </Activity>
+    <Activity Name="Approved">
+      <Rules>
+        <DestinationRule>         
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ServerEvent Name="Approved" Type="Server" Order="1" EventAction="Approved">
+        </ServerEvent>
+      </Events>
+    </Activity>
+  </Activities>
+  <Actions>
+    <Action Name="MgrDestinationRule">
+      <ExecuteMethod Type="WorkflowConsole.ProcessRules, WorkflowConsole, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="MgrDestinationRule">
+        <InputParameters>
+        </InputParameters>
+        <OutputParameters>
+        </OutputParameters>
+      </ExecuteMethod>
+    </Action>
+    <Action Name = "LineRule1">
+      <ExecuteMethod Type="WorkflowConsole.ProcessRules, WorkflowConsole, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="LineRule">
+        <InputParameters>
+        </InputParameters>
+        <OutputParameters>
+        </OutputParameters>
+      </ExecuteMethod>
+    </Action>
+    <Action Name = "LineRule2">
+      <ExecuteMethod Type="WorkflowConsole.ProcessRules, WorkflowConsole, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="ApproveLineRule">
+        <InputParameters>
+        </InputParameters>
+        <OutputParameters>
+        </OutputParameters>
+      </ExecuteMethod>
+    </Action>
+    <Action Name = "LineRule3">
+      <ExecuteMethod Type="WorkflowConsole.ProcessRules, WorkflowConsole, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="DeclineLineRule">
+        <InputParameters>
+        </InputParameters>
+        <OutputParameters>
+        </OutputParameters>
+      </ExecuteMethod>
+    </Action>
+    <Action Name="ManagerApproval">
+      <ExecuteMethod Type="WorkflowConsole.ProcessRules, WorkflowConsole, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="ManagerApproval">
+        <InputParameters>
+        </InputParameters>
+        <OutputParameters>
+        </OutputParameters>
+      </ExecuteMethod>
+    </Action>
+    <Action Name="ManagerApprovalSuccessRule">
+      <ExecuteMethod Type="WorkflowConsole.ProcessRules, WorkflowConsole, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="ManagerApprovalSuccessRule">
+        <InputParameters>
+        </InputParameters>
+        <OutputParameters>
+        </OutputParameters>
+      </ExecuteMethod>
+    </Action>
+    <Action Name="Approved">
+      <ExecuteMethod Type="WorkflowConsole.ProcessRules, WorkflowConsole, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="ManagerApproval">
+        <InputParameters>
+        </InputParameters>
+        <OutputParameters>
+        </OutputParameters>
+      </ExecuteMethod>
+    </Action>
+    <Action Name="Declined">
+      <ExecuteMethod Type="WorkflowConsole.ProcessRules, WorkflowConsole, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="ManagerApproval">
+        <InputParameters>
+        </InputParameters>
+        <OutputParameters>
+        </OutputParameters>
+      </ExecuteMethod>
+    </Action>
+    <Action Name="MgrEscalationRule">
+      <ExecuteMethod Type="WorkflowConsole.ProcessRules, WorkflowConsole, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="MgrEscalationRule">
+        <InputParameters>
+        </InputParameters>
+        <OutputParameters>
+        </OutputParameters>
+      </ExecuteMethod>
+    </Action>
+  </Actions>
+</Process>

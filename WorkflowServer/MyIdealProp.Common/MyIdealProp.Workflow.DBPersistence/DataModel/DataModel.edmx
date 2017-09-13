@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActivityInstances">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProcInstId" Type="int" Nullable="false" />
+          <Property Name="ActivityName" Type="nvarchar" MaxLength="256" />
+          <Property Name="DestinationUser" Type="nvarchar" MaxLength="256" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="DataFields">
+          <Key>
+            <PropertyRef Name="ProcInstId" />
+            <PropertyRef Name="FieldName" />
+          </Key>
+          <Property Name="ProcInstId" Type="int" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FieldValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EscalationInstances">
+          <Key>
+            <PropertyRef Name="EscalationId" />
+          </Key>
+          <Property Name="EscalationId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProcInstId" Type="int" Nullable="false" />
+          <Property Name="ActInstId" Type="int" Nullable="false" />
+          <Property Name="DueTime" Type="datetime" Nullable="false" />
+          <Property Name="ActionName" Type="nvarchar" MaxLength="256" />
+          <Property Name="RepeatNo" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="ExecuteTime" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EventInstances">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ActInstId" Type="int" Nullable="false" />
+          <Property Name="ProcInstId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="LineInstances">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProcInstId" Type="int" Nullable="false" />
+          <Property Name="From" Type="nvarchar" MaxLength="50" />
+          <Property Name="To" Type="nvarchar" MaxLength="50" />
+          <Property Name="RuleResult" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProcessInstances">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="int" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="256" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="Originator" Type="nvarchar" MaxLength="256" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Archived" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProcessScheme">
+          <Key>
+            <PropertyRef Name="ProcessId" />
+          </Key>
+          <Property Name="ProcessId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="256" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Version" Type="int" />
+          <Property Name="IsDefault" Type="bit" />
+          <Property Name="Scheme" Type="nvarchar(max)" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Worklist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProcInstId" Type="int" />
+          <Property Name="ActInstId" Type="int" />
+          <Property Name="EventInstId" Type="int" />
+          <Property Name="ItemData" Type="nvarchar" MaxLength="256" />
+          <Property Name="ActvityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DestinationUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="DataModelStoreContainer">
+          <EntitySet Name="ActivityInstances" EntityType="Self.ActivityInstances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataFields" EntityType="Self.DataFields" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EscalationInstances" EntityType="Self.EscalationInstances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventInstances" EntityType="Self.EventInstances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LineInstances" EntityType="Self.LineInstances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcessInstances" EntityType="Self.ProcessInstances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcessScheme" EntityType="Self.ProcessScheme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Worklist" EntityType="Self.Worklist" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ProcessSchemes" EntityType="DataModel.ProcessScheme" />
+          <EntitySet Name="ActivityInstances" EntityType="DataModel.ActivityInstance" />
+          <EntitySet Name="DataFields" EntityType="DataModel.DataField" />
+          <EntitySet Name="EventInstances" EntityType="DataModel.EventInstance" />
+          <EntitySet Name="LineInstances" EntityType="DataModel.LineInstance" />
+          <EntitySet Name="Worklists" EntityType="DataModel.Worklist" />
+          <EntitySet Name="EscalationInstances" EntityType="DataModel.EscalationInstance" />
+          <EntitySet Name="ProcessInstances" EntityType="DataModel.ProcessInstance" />
+        </EntityContainer>
+        <EntityType Name="ProcessScheme">
+          <Key>
+            <PropertyRef Name="ProcessId" />
+          </Key>
+          <Property Name="ProcessId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="Int32" />
+          <Property Name="IsDefault" Type="Boolean" />
+          <Property Name="Scheme" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ActivityInstance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcInstId" Type="Int32" Nullable="false" />
+          <Property Name="ActivityName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DestinationUser" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DataField">
+          <Key>
+            <PropertyRef Name="ProcInstId" />
+            <PropertyRef Name="FieldName" />
+          </Key>
+          <Property Name="ProcInstId" Type="Int32" Nullable="false" />
+          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FieldValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EventInstance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ActInstId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="ProcInstId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LineInstance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcInstId" Type="Int32" Nullable="false" />
+          <Property Name="From" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="To" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RuleResult" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Worklist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcInstId" Type="Int32" />
+          <Property Name="ActInstId" Type="Int32" />
+          <Property Name="EventInstId" Type="Int32" />
+          <Property Name="ActvityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DestinationUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="ItemData" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EscalationInstance">
+          <Key>
+            <PropertyRef Name="EscalationId" />
+          </Key>
+          <Property Name="EscalationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcInstId" Type="Int32" Nullable="false" />
+          <Property Name="ActInstId" Type="Int32" Nullable="false" />
+          <Property Name="DueTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActionName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="ExecuteTime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RepeatNo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProcessInstance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="Int32" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Originator" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="Archived" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="DataModel" />
+        <Alias Key="Target" Value="DataModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="DataModelContainer" StorageEntityContainer="DataModelStoreContainer">
+          <EntitySetMapping Name="ProcessSchemes">
+            <EntityTypeMapping TypeName="DataModel.ProcessScheme">
+              <MappingFragment StoreEntitySet="ProcessScheme">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Scheme" ColumnName="Scheme" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityInstances">
+            <EntityTypeMapping TypeName="DataModel.ActivityInstance">
+              <MappingFragment StoreEntitySet="ActivityInstances">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="DestinationUser" ColumnName="DestinationUser" />
+                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+                <ScalarProperty Name="ProcInstId" ColumnName="ProcInstId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataFields">
+            <EntityTypeMapping TypeName="DataModel.DataField">
+              <MappingFragment StoreEntitySet="DataFields">
+                <ScalarProperty Name="FieldValue" ColumnName="FieldValue" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="ProcInstId" ColumnName="ProcInstId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventInstances">
+            <EntityTypeMapping TypeName="DataModel.EventInstance">
+              <MappingFragment StoreEntitySet="EventInstances">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ProcInstId" ColumnName="ProcInstId" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ActInstId" ColumnName="ActInstId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LineInstances">
+            <EntityTypeMapping TypeName="DataModel.LineInstance">
+              <MappingFragment StoreEntitySet="LineInstances">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="RuleResult" ColumnName="RuleResult" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="ProcInstId" ColumnName="ProcInstId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Worklists">
+            <EntityTypeMapping TypeName="DataModel.Worklist">
+              <MappingFragment StoreEntitySet="Worklist">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ItemData" ColumnName="ItemData" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DestinationUser" ColumnName="DestinationUser" />
+                <ScalarProperty Name="ActvityName" ColumnName="ActvityName" />
+                <ScalarProperty Name="EventInstId" ColumnName="EventInstId" />
+                <ScalarProperty Name="ActInstId" ColumnName="ActInstId" />
+                <ScalarProperty Name="ProcInstId" ColumnName="ProcInstId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EscalationInstances">
+            <EntityTypeMapping TypeName="DataModel.EscalationInstance">
+              <MappingFragment StoreEntitySet="EscalationInstances">
+                <ScalarProperty Name="RepeatNo" ColumnName="RepeatNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ExecuteTime" ColumnName="ExecuteTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="DueTime" ColumnName="DueTime" />
+                <ScalarProperty Name="ActInstId" ColumnName="ActInstId" />
+                <ScalarProperty Name="ProcInstId" ColumnName="ProcInstId" />
+                <ScalarProperty Name="EscalationId" ColumnName="EscalationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcessInstances">
+            <EntityTypeMapping TypeName="DataModel.ProcessInstance">
+              <MappingFragment StoreEntitySet="ProcessInstances">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Originator" ColumnName="Originator" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

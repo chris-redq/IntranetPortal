@@ -1,0 +1,94 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MyIdealProp.Common", "MyIdealProp.Common\MyIdealProp.Common.vbproj", "{CCE036AB-1EA0-4246-8085-364546441A77}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MyIdealProp.Workflow.Core", "MyIdealProp.Workflow.Core\MyIdealProp.Workflow.Core.vbproj", "{5AB421B1-4FD3-4D6A-ADF6-30891CAAD74C}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WorkflowConsole", "WorkflowConsole\WorkflowConsole.vbproj", "{13893A25-118B-4F36-9764-745C1B9C5805}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WorkflowServer", "WorkflowServer\WorkflowServer.vbproj", "{4A30382E-B981-47A8-A28B-A3A0A1D87BEA}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MyIdealProp.Workflow.DBPersistence", "MyIdealProp.Workflow.DBPersistence\MyIdealProp.Workflow.DBPersistence.vbproj", "{513A8DB7-C207-4EA3-BDF7-E9C7B408AF5B}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PortalProcesses", "..\Processes\PortalProcesses\PortalProcesses.vbproj", "{1A445F18-5224-4445-AF21-54EAB5556CB6}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ProcessTest", "..\Processes\ProcessTest\ProcessTest.vbproj", "{2BD5D91B-0287-4239-98F0-C5193F395D8C}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WorkflowEngine", "WorkflowEngine\WorkflowEngine.vbproj", "{02A561C0-425B-4DB6-949B-0842146DA459}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 9
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://chrispc:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = MyIdealProp.Common\\MyIdealProp.Common.vbproj
+		SccProjectName1 = MyIdealProp.Common
+		SccLocalPath1 = MyIdealProp.Common
+		SccProjectUniqueName2 = MyIdealProp.Workflow.Core\\MyIdealProp.Workflow.Core.vbproj
+		SccProjectName2 = MyIdealProp.Workflow.Core
+		SccLocalPath2 = MyIdealProp.Workflow.Core
+		SccProjectUniqueName3 = MyIdealProp.Workflow.DBPersistence\\MyIdealProp.Workflow.DBPersistence.vbproj
+		SccProjectName3 = MyIdealProp.Workflow.DBPersistence
+		SccLocalPath3 = MyIdealProp.Workflow.DBPersistence
+		SccProjectUniqueName4 = WorkflowConsole\\WorkflowConsole.vbproj
+		SccProjectName4 = WorkflowConsole
+		SccLocalPath4 = WorkflowConsole
+		SccProjectUniqueName5 = WorkflowEngine\\WorkflowEngine.vbproj
+		SccProjectName5 = WorkflowEngine
+		SccLocalPath5 = WorkflowEngine
+		SccProjectUniqueName6 = WorkflowServer\\WorkflowServer.vbproj
+		SccProjectName6 = WorkflowServer
+		SccLocalPath6 = WorkflowServer
+		SccProjectUniqueName7 = ..\\Processes\\PortalProcesses\\PortalProcesses.vbproj
+		SccProjectName7 = ../Processes/PortalProcesses
+		SccLocalPath7 = ..\\Processes\\PortalProcesses
+		SccProjectUniqueName8 = ..\\Processes\\ProcessTest\\ProcessTest.vbproj
+		SccProjectName8 = ../Processes/ProcessTest
+		SccLocalPath8 = ..\\Processes\\ProcessTest
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCE036AB-1EA0-4246-8085-364546441A77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE036AB-1EA0-4246-8085-364546441A77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE036AB-1EA0-4246-8085-364546441A77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE036AB-1EA0-4246-8085-364546441A77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AB421B1-4FD3-4D6A-ADF6-30891CAAD74C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AB421B1-4FD3-4D6A-ADF6-30891CAAD74C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AB421B1-4FD3-4D6A-ADF6-30891CAAD74C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AB421B1-4FD3-4D6A-ADF6-30891CAAD74C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13893A25-118B-4F36-9764-745C1B9C5805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13893A25-118B-4F36-9764-745C1B9C5805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13893A25-118B-4F36-9764-745C1B9C5805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13893A25-118B-4F36-9764-745C1B9C5805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A30382E-B981-47A8-A28B-A3A0A1D87BEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A30382E-B981-47A8-A28B-A3A0A1D87BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A30382E-B981-47A8-A28B-A3A0A1D87BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A30382E-B981-47A8-A28B-A3A0A1D87BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{513A8DB7-C207-4EA3-BDF7-E9C7B408AF5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{513A8DB7-C207-4EA3-BDF7-E9C7B408AF5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{513A8DB7-C207-4EA3-BDF7-E9C7B408AF5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{513A8DB7-C207-4EA3-BDF7-E9C7B408AF5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A445F18-5224-4445-AF21-54EAB5556CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A445F18-5224-4445-AF21-54EAB5556CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A445F18-5224-4445-AF21-54EAB5556CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A445F18-5224-4445-AF21-54EAB5556CB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BD5D91B-0287-4239-98F0-C5193F395D8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BD5D91B-0287-4239-98F0-C5193F395D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BD5D91B-0287-4239-98F0-C5193F395D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BD5D91B-0287-4239-98F0-C5193F395D8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02A561C0-425B-4DB6-949B-0842146DA459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02A561C0-425B-4DB6-949B-0842146DA459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02A561C0-425B-4DB6-949B-0842146DA459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02A561C0-425B-4DB6-949B-0842146DA459}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
