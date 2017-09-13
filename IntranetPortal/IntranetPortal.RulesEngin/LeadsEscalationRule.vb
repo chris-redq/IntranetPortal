@@ -32,7 +32,61 @@ Public Class LeadsEscalationRule
     End Sub
 
     Private Shared Function GetRule(ld As Lead) As List(Of EscalationRule)
-        Return TaskRules.Where(Function(r) r.Name = CType(ld.Status, LeadStatus).ToString).OrderByDescending(Function(r) r.Sequence).ToList
+        Return DeadRules.Where(Function(r) r.Name = CType(ld.Status, LeadStatus).ToString).OrderByDescending(Function(r) r.Sequence).ToList
+    End Function
+
+    Private Shared Function DeadRules() As List(Of EscalationRule)
+        Dim rules As New List(Of EscalationRule)
+        rules.Add(New EscalationRule("DeadEnd", "60:00:00",
+             Sub(leads)
+                 Dim ld = CType(leads, Lead)
+                 ld.Recycle()
+             End Sub,
+             Function(leads)
+                 Dim ld = CType(leads, Lead)
+                 Select Case ld.DeadReason
+                     Case 3
+                         Return True
+                 End Select
+
+                 Return False
+             End Function,
+             1))
+
+        rules.Add(New EscalationRule("DeadEnd", "90.00:00:00",
+                     Sub(leads)
+                         Dim ld = CType(leads, Lead)
+                         ld.Recycle()
+                     End Sub,
+                     Function(leads)
+                         Dim ld = CType(leads, Lead)
+                         Select Case ld.DeadReason
+                             Case 2, 5, 6
+                                 Return True
+                         End Select
+
+                         Return False
+                     End Function,
+                     2))
+
+        rules.Add(New EscalationRule("DeadEnd", "180.00:00:00",
+                            Sub(leads)
+                                Dim ld = CType(leads, Lead)
+                                ld.Recycle()
+                            End Sub,
+                            Function(leads)
+                                Dim ld = CType(leads, Lead)
+                                Select Case ld.DeadReason
+                                    Case 4
+                                        Return True
+                                End Select
+
+                                Return False
+                            End Function,
+                            3))
+        Return rules
+
+
     End Function
 
     Private Shared Function TaskRules() As List(Of EscalationRule)
@@ -310,7 +364,7 @@ Public Class LeadsEscalationRule
                                                     Return ld.LastUserUpdate
                                                 End Function))
 
-        rules.Add(New EscalationRule("DeadEnd", "00:00:00",
+        rules.Add(New EscalationRule("DeadEnd", "60:00:00",
                   Sub(leads)
                       Dim ld = CType(leads, Lead)
                       ld.Recycle()
@@ -318,7 +372,7 @@ Public Class LeadsEscalationRule
                   Function(leads)
                       Dim ld = CType(leads, Lead)
                       Select Case ld.DeadReason
-                          Case 2, 3, 6
+                          Case 3
                               Return True
                       End Select
 
@@ -326,7 +380,7 @@ Public Class LeadsEscalationRule
                   End Function,
                   1))
 
-        rules.Add(New EscalationRule("DeadEnd", "30.00:00:00",
+        rules.Add(New EscalationRule("DeadEnd", "90.00:00:00",
                      Sub(leads)
                          Dim ld = CType(leads, Lead)
                          ld.Recycle()
@@ -334,7 +388,7 @@ Public Class LeadsEscalationRule
                      Function(leads)
                          Dim ld = CType(leads, Lead)
                          Select Case ld.DeadReason
-                             Case 5
+                             Case 2, 5, 6
                                  Return True
                          End Select
 
@@ -342,7 +396,7 @@ Public Class LeadsEscalationRule
                      End Function,
                      2))
 
-        rules.Add(New EscalationRule("DeadEnd", "120.00:00:00",
+        rules.Add(New EscalationRule("DeadEnd", "180.00:00:00",
                             Sub(leads)
                                 Dim ld = CType(leads, Lead)
                                 ld.Recycle()

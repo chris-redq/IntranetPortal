@@ -11,7 +11,6 @@ Public Class SendMailControl
         EmailBody.Toolbars.Add(Utility.CreateCustomToolbar("Custom"))
         If (Not IsPostBack) Then
             'BindEmail()
-
         End If
     End Sub
 

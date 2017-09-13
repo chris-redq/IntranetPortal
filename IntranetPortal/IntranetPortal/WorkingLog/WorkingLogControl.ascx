@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="WorkingLogControl.ascx.vb" Inherits="IntranetPortal.WorkingLogControl" %>
-<script src="/bower_components/signalr/jquery.signalR.min.js"></script>
+<%--<script src="/bower_components/signalr/jquery.signalR.min.js"></script>--%>
 <script src="/signalr/hubs"></script>
 
 <script type="text/javascript">

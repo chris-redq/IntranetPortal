@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="AgentCharts.ascx.vb" Inherits="IntranetPortal.AgentCharts" %>
 
-<script src="/bower_components/globalize/lib/globalize.js"></script>
-<script type="text/javascript" src="http://cdn3.devexpress.com/jslib/15.1.6/js/dx.chartjs.js"></script>
+<%--<script src="/bower_components/globalize/lib/globalize.js"></script>--%>
+<%--<script type="text/javascript" src="http://cdn3.devexpress.com/jslib/15.1.6/js/dx.chartjs.js"></script>--%>
 
 
 <%--use for debug chart width--%>

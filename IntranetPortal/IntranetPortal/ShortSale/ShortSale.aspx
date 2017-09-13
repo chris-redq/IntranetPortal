@@ -14,8 +14,8 @@
 <%@ Register Src="~/BusinessForm/BusinessFormControl.ascx" TagPrefix="uc1" TagName="BusinessFormControl" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="head">
-    <link href="/bower_components/webui-popover/dist/jquery.webui-popover.min.css" rel="stylesheet" />
-    <script src="/bower_components/webui-popover/dist/jquery.webui-popover.min.js"></script>
+ <%--   <link href="/bower_components/webui-popover/dist/jquery.webui-popover.min.css" rel="stylesheet" />
+    <script src="/bower_components/webui-popover/dist/jquery.webui-popover.min.js"></script>--%>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="MainContentPH" runat="server">

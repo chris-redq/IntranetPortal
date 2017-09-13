@@ -14,7 +14,8 @@
         }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script src="/bower_components/protyotypejs/prototype.min.js"></script>
+    <%--<script src="/bower_components/protyotypejs/prototype.min.js"></script>--%>
+    <script src="/Scripts/vendor.js"></script>
     <script>
 
         var rendererOptions = {

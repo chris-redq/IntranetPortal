@@ -22,6 +22,8 @@
             height: 100%;
             z-index: 9999;
         }
+
+        .ui-helper-hidden-accessible { position: absolute; left: -9999px; }
     </style>
 
     <script>
@@ -33,44 +35,49 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css' />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <%--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />--%>
     <link rel="stylesheet" onerror="onCssCdnError(this)" data-fallback="/css/dx.common.css" href="https://cdn3.devexpress.com/jslib/16.1.6/css/dx.common.css" type="text/css" />
     <link rel="stylesheet" onerror="onCssCdnError(this)" data-fallback="/css/dx.light.css" href="https://cdn3.devexpress.com/jslib/16.1.6/css/dx.light.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.12.1/select.min.css" />
-    <link rel="stylesheet" href="/bower_components/angular-ui-layout/src/ui-layout.css" />
+    <%--<link rel="stylesheet" href="/bower_components/angular-ui-layout/src/ui-layout.css" />
     <link rel="stylesheet" href="/bower_components/angular-animate-css/build/nga.min.css" />
-    <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css" />
-    <link rel="stylesheet" href="/css/stevencss.css?v=2017522" type="text/css" />
+    <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css" />--%>
+    <link rel="stylesheet" href="/css/vendor.css" />
+    <link rel="stylesheet" href="/css/stevencss.css?v=201798" type="text/css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+   <%-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/globalize/0.1.1/globalize.min.js"></script>
-    <script src="/bower_components/moment/min/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/globalize/0.1.1/globalize.min.js"></script>--%>
+    
+    <%--<script src="/bower_components/moment/min/moment.min.js"></script>--%>
+  <%--  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
-    <%--use pleace which stauation angular default route not enough to handle --%>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-    <!-- JSZip Must before dx.all.js because dx.all excel export feature depend on it-->
-    <script src="https://cdn3.devexpress.com/jslib/16.1.6/js/dx.all.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.12.1/select.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
-    <script src="/bower_components/angular-ui-layout/src/ui-layout.js"></script>
-    <script src="/bower_components/ngMask/dist/ngMask.min.js"></script>
-    <script src="/bower_components/jquery-formatcurrency/jquery.formatCurrency-1.4.0.js"></script>
-    <script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>--%>
+    
+    <script src="/Scripts/vendor.js" ></script>
 
-    <script src="/Scripts/autosave.js?v=2017522"></script>
+    <%--use pleace which stauation angular default route not enough to handle --%>
+ <%--   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>--%>
+    <!-- JSZip Must before dx.all.js because dx.all excel export feature depend on it-->
+  <%--  <script src="https://cdn3.devexpress.com/jslib/16.1.6/js/dx.all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.12.1/select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>--%>
+    <%--<script src="/bower_components/angular-ui-layout/src/ui-layout.js"></script>--%>
+    <%--<script src="/bower_components/ngMask/dist/ngMask.min.js"></script>--%>
+    <%--<script src="/bower_components/jquery-formatcurrency/jquery.formatCurrency-1.4.0.js"></script>--%>
+    <%--<script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>--%>
+<%--    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js"></script>--%>
+
+    <script src="/Scripts/autosave.js?v=201798"></script>
     <!-- pro env -->
-    <script src="/js/build/intranetportal.js?v=2017522"></script>
+    <script src="/js/build/intranetportal.js?v=201798"></script>
 
     <script>
         // check if devextreme is loaded
@@ -168,9 +175,9 @@
                                               }">
     </div>
 
-    <script src="/Scripts/autosave.js?v=2017522"></script>
-    <script src="/Scripts/stevenjs.js?v=2017522"></script>
-    <script src="/Scripts/autologout.js?v=2017522"></script>
+    <script src="/Scripts/autosave.js?v=201798"></script>
+    <script src="/Scripts/stevenjs.js?v=201798"></script>
+    <script src="/Scripts/autologout.js?v=201798"></script>
     <script>
         init_tooltip_and_scroll();
     </script>

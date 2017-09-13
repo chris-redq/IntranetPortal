@@ -24,7 +24,6 @@ Partial Public Class Lead
 
     Public Shared Function GetInstance(bble As String) As Lead
         Dim context As New Entities
-
         Return context.Leads.Where(Function(l) l.BBLE = bble).SingleOrDefault
     End Function
 
@@ -237,6 +236,29 @@ Partial Public Class Lead
     Public Shared Function GetLeadsByBBLEs(bbles As String()) As Lead()
         Using ctx As New Entities
             Return ctx.Leads.Where(Function(l) bbles.Contains(l.BBLE)).ToArray
+        End Using
+    End Function
+
+    Public Shared Function GetLeadsPortalStatus(bbles As List(Of String)) As Object
+        Using ctx As New Entities
+            For Each bbl In bbles.Distinct
+                Dim li = ctx.LeadsInfoes.Find(bbl)
+                If li Is Nothing AndAlso Not ctx.LeadsInfoes.Local.Any(Function(a) a.BBLE = bbl) Then
+                    li = New LeadsInfo
+                    li.BBLE = bbl
+                    li.CreateDate = DateTime.Now
+                    li.CreateBy = "System"
+                    ctx.LeadsInfoes.Add(li)
+                End If
+            Next
+
+            ctx.SaveChanges()
+
+            Dim result = From pv In ctx.PortalLeadsViews
+                         Where bbles.Contains(pv.BBLE)
+                         Select pv
+
+            Return result.ToList
         End Using
     End Function
 

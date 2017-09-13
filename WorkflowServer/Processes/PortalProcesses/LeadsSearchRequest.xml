@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Process Name="LeadsSearchRequest">
+  <DataFields>
+    <DataField Name="Result" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+    <DataField Name="SearchName" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+    <DataField Name="SearchData" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+    <DataField Name="SearchId" Type="System.Int32" Scope="Process" DefaultValue="0"></DataField>
+  </DataFields>
+  <Lines>
+    <Line Name="Initial" From="Start" To="ManagerApproval" CodeRule="LineRule1">
+    </Line>
+    <Line Name="MgrApprove" From="ManagerApproval" To="UploadData" CodeRule="LineRule2">
+    </Line>
+    <Line Name="MgrDecline" From="ManagerApproval" To="Declined" CodeRule="LineRule3">
+    </Line>
+    <Line Name="UploadCompleted" From="UploadData" To="Completed" CodeRule="LineRule4">
+    </Line>
+  </Lines>
+  <Activities>
+    <Activity Name="Start" IsInitial="True">
+    </Activity>
+    <Activity Name="ManagerApproval">
+      <Rules>
+        <DestinationRule>          
+          <Destination Type="User" Name="Jamie Ventura" ></Destination>
+          <Destination Type="User" Name="Isaac Aronov" ></Destination>
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ClientEvent Name="eventName" Order="1" EventAction="ManagerApproval">
+        </ClientEvent>
+      </Events>
+    </Activity>
+    <Activity Name="Declined">
+      <Rules>
+      </Rules>
+      <Events>
+        <ServerEvent Name="Declined" Type="Server" Order="1" EventAction="Declined">
+        </ServerEvent>
+      </Events>
+    </Activity>
+    <Activity Name="UploadData">
+      <Rules>
+        <DestinationRule>
+          <Destination Type="User" Name="Steven Wu"></Destination>
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ClientEvent Name="UploadDataEvent" Order="1" EventAction="UploadDataAction">
+        </ClientEvent>
+      </Events>
+    </Activity>
+    <Activity Name="Completed">
+      <Rules>
+        <DestinationRule>
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ServerEvent Name="Completed" Type="Server" Order="1" EventAction="Approved">
+        </ServerEvent>
+      </Events>
+    </Activity>
+  </Activities>
+  <Actions>
+    <Action Name="LineRule1">
+      <ExecuteMethod Type="PortalProcesses.LeadsSearchRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="StartToMgrLineRule">
+      </ExecuteMethod>
+    </Action>
+    <Action Name = "LineRule2">
+      <ExecuteMethod Type="PortalProcesses.LeadsSearchRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="ApproveLineRule">
+      </ExecuteMethod>
+    </Action>
+    <Action Name = "LineRule3">
+      <ExecuteMethod Type="PortalProcesses.LeadsSearchRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="DeclineLineRule">      
+      </ExecuteMethod>
+    </Action>
+    <Action Name="LineRule4">
+      <ExecuteMethod Type="PortalProcesses.LeadsSearchRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="StartToMgrLineRule">
+      </ExecuteMethod>
+    </Action>
+    <Action Name="MgrDestinationRule">
+      <ExecuteMethod Type="PortalProcesses.LeadsSearchRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="MgrDestinationRule">        
+      </ExecuteMethod>
+    </Action>
+    <Action Name="ManagerApproval">
+      <ExecuteMethod Type="PortalProcesses.LeadsSearchRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="ManagerApproval">        
+      </ExecuteMethod>
+    </Action>
+    <Action Name="UploadDataDestinationRule">
+      <ExecuteMethod Type="PortalProcesses.LeadsSearchRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="UploadDataDestinationRule">       
+      </ExecuteMethod>
+    </Action>    
+    <Action Name="UploadDataAction">
+      <ExecuteMethod Type="PortalProcesses.LeadsSearchRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="UploadDataAction">
+      </ExecuteMethod>
+    </Action>
+    <Action Name="Approved">
+      <ExecuteMethod Type="PortalProcesses.LeadsSearchRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="ProcessApproved">       
+      </ExecuteMethod>
+    </Action>
+    <Action Name="Declined">
+      <ExecuteMethod Type="PortalProcesses.LeadsSearchRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="ProcessDeclined">        
+      </ExecuteMethod>
+    </Action>
+  </Actions>
+</Process>

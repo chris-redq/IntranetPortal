@@ -6,16 +6,21 @@ Public Class FormDataItem
     Private _businessData As BusinessDataBase
     Public ReadOnly Property BusinessData As BusinessDataBase
         Get
-            If _businessData Is Nothing AndAlso Not String.IsNullOrEmpty(FormName) Then
-                _businessData = CreateBusinessDataInstance()
-                If DataId > 0 Then
-                    _businessData = _businessData.LoadData(DataId)
-                End If
-            End If
-
-            Return _businessData
+            Return LoadBusinessDataBase()
         End Get
     End Property
+
+    Private Function LoadBusinessDataBase() As BusinessDataBase
+        If _businessData Is Nothing AndAlso Not String.IsNullOrEmpty(FormName) Then
+            _businessData = CreateBusinessDataInstance()
+            If DataId > 0 Then
+                _businessData = _businessData.LoadData(DataId)
+                _businessData.Loaded = True
+            End If
+        End If
+
+        Return _businessData
+    End Function
 
     Public Sub LogSave(saveBy As String)
         Core.SystemLog.Log(Me.FormName, Me.FormData, Core.SystemLog.LogCategory.SaveData, Me.Tag, saveBy)
@@ -62,6 +67,10 @@ Public Class FormDataItem
                 ctx.Entry(Me).State = Entity.EntityState.Modified
             End If
             ctx.SaveChanges()
+
+            If Not BusinessData.Loaded Then
+                Me._businessData = BusinessData.LoadData(Me.DataId)
+            End If
 
             Dim bId = BusinessData.Save(Me)
 

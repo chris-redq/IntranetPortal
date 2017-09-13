@@ -1773,8 +1773,8 @@ angular.module("PortalApp").service("ptCom", ["$rootScope", function ($rootScope
                 }
             }
         }
-
     }
+
     this.parseSearch = function (/*string*/ searchString) {
         var result = {};
         if (!searchString || typeof searchString != 'string')   //not a string
@@ -2546,9 +2546,9 @@ angular.module("PortalApp").factory("ptUnderwriting", ["$http", "ptCom", '$q', '
                 var that = this;
                 if (this.serviceURL) return this.serviceURL;
                 $http({
-                    url: "/Webconfig.txt",
+                    url: "/api/underwriting/config",
                     method: "GET"
-                }).then(function (d) {
+                }).then(function (d) {                    
                     that.serviceURL = d.data["UnderwritingServiceServerClient"] + "/signalr";
                 })
             },
@@ -2604,7 +2604,7 @@ angular.module("PortalApp").factory("ptUnderwriting", ["$http", "ptCom", '$q', '
                 setTimeout(function () {
                     if (!that.proxy) console.log("Fail to init proxy");
                     clearInterval(proxyInterval);
-                }, 2000);
+                }, 10000);
             }
         }
 
@@ -2710,7 +2710,7 @@ angular.module("PortalApp").factory("ptUnderwriting", ["$http", "ptCom", '$q', '
             var that = this;
             return $q(function (resolve, reject) {
                 if (!bble) reject("BBLE cannot be blank.");
-                var username = ptCom.getCurrentUser();
+                //var username = ptCom.getCurrentUser();
                 var newData = underwriting.new();
                 newData.BBLE = bble;
                 newData.Status = 1;
@@ -4812,8 +4812,16 @@ angular.module("PortalApp").controller("DocSearchController", [
                         // if (gridCase) gridCase.Refresh();
                     });
                 }
-
             };
+
+            $scope.MoveToUnderwriting = function(bble)
+            {
+                ptUnderwriting.tryCreate(bble).then(function () {
+                    AngularRoot.alert("Document completed!");
+                }, function error(e) {
+                    console.log(e);
+                });
+            }
 
             // only one of fha, fannie, freddie_mac can be yes at the same time
             $scope.$watch("DocSearch.LeadResearch.fha",
@@ -4996,6 +5004,34 @@ angular.module('PortalApp')
 
 
         }]);
+angular
+    .module("PortalApp")
+    .controller('LeadsAssignController', ['$scope', '$http', function ($scope, $http) {
+        var sp = $scope;
+        sp.loadPortalStatus = loadPortalStatus;
+        
+
+        function loadPortalStatus()
+        {
+            var url = '/api/dataservice/leadsportalstatus';
+            postData(url, sp.bbles).then(function (response) {
+                sp.portalLeads = response.data;
+            });
+        }
+
+        function postData(url, data) {
+            return $http({
+                method: 'POST',
+                url: localUrl,
+                data: data,
+                headers: {
+                    'Content-Type': "application/json",
+                    'apiKey': "6F43717752E839FD9034B6C426770488A7BA624E9E6D018E26D52451C7A4BCFE56338E92D621F826AC8B8228DDFEC4D7628AAC4917A06F3AE6CD56C978A691CA"
+                }
+            })
+        };
+}]);
+
 /**
  * @author Steven Wu
  * @date 9/15/2016
@@ -6608,7 +6644,7 @@ function ($scope, ptCom, PreSignItem, DxGridModel, $location, PortalHttpIntercep
     $scope.preAssign.CreateBy = $scope.preAssign.CreateBy || $('#currentUser').val();
     $scope.preAssign.CheckRequestData = $scope.preAssign.CheckRequestData || { Type: 'Short Sale', Checks: [] };
     if ($scope.preAssign.$promise) {
-        $scope.preAssign.$promise.then(function() {
+        $scope.preAssign.$promise.then(function () {
             if (!$scope.preAssign.Id) {
                 $scope.preAssign.CheckRequestData = { Type: 'Short Sale', Checks: [] };
                 $scope.preAssign.Parties = [];
@@ -6616,6 +6652,14 @@ function ($scope, ptCom, PreSignItem, DxGridModel, $location, PortalHttpIntercep
                 $scope.preAssign.NeedCheck = true;
             }
         });
+    }
+    else {
+        if (!$scope.preAssign.Id) {
+            $scope.preAssign.CheckRequestData = { Type: 'Short Sale', Checks: [] };
+            $scope.preAssign.Parties = [];
+            $scope.preAssign.NeedSearch = true;
+            $scope.preAssign.NeedCheck = true;
+        }
     }
 
     // debugger;
@@ -8220,7 +8264,7 @@ portalApp.controller('shortSalePreSignCtrl', function ($scope, ptCom, $http,
         return true;
     }
 
-    $scope.onAssignCorpSuccessed = function (data) {
+    $scope.onAssignCorpSuccessed = function (data) {        
         $scope.SSpreSign.Status = 1;
         /*should save to data base*/
         $scope.constractFromData();
@@ -8387,7 +8431,12 @@ portalApp.controller('shortSalePreSignCtrl', function ($scope, ptCom, $http,
                     data.FormData.CreateDate = data.CreateDate;
                 }
 
+                if (data.FormData.BusinessData && data.FormData.BusinessData.BBLE == null && data.BusinessData.BBLE) {
+                    data.FormData.BusinessData = data.BusinessData;
+                }
+
                 angular.extend($scope.SSpreSign, data.FormData);
+                
 
                 $scope.DeadType = $scope.SSpreSign.DeadType;                
                 $scope.SSpreSign.Status = data.BusinessData.Status;
@@ -9088,6 +9137,7 @@ angular.module("PortalApp").controller("UnderwritingController", [
                     }
                 });
         };
+
         // Snapshot current values of forms, and sava copy in database for future analysis
         $scope.archiveFunc = function () {
             ptCom.prompt("Please give a name to this archive.",

@@ -8,7 +8,7 @@
 <%@ Register Src="~/ShortSale/ShortSaleMortgageTab.ascx" TagPrefix="uc1" TagName="ShortSaleMortgageTab" %>
 <%@ Register Src="~/PopupControl/VendorsPopup.ascx" TagPrefix="uc1" TagName="VendorsPopup" %>
 
-    <script src="/bower_components/jquery-formatcurrency/jquery.formatCurrency-1.4.0.js"></script>
+    <%--<script src="/bower_components/jquery-formatcurrency/jquery.formatCurrency-1.4.0.js"></script>--%>
 <script type="text/javascript">
     function init_currency() {
         $('.input_currency').formatCurrency();

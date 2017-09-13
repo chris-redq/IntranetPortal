@@ -647,6 +647,8 @@ Public Class DocumentGenerator
         file.PlaceHolders.Add(New DocumentPlaceHolder("BUYERATTORNEYADDRESS", "DealSheet.ContractOrMemo.Buyer.buyerAttorneyObj.Office"))
         file.PlaceHolders.Add(New DocumentPlaceHolder("BUYERATTORNEYTEL", "DealSheet.ContractOrMemo.Buyer.buyerAttorneyObj.OfficeNO"))
         file.PlaceHolders.Add(New DocumentPlaceHolder("BUYERATTORNEYFAX", "DealSheet.ContractOrMemo.Buyer.buyerAttorneyObj.Fax"))
+
+        file.PlaceHolders.Add(New DocumentPlaceHolder("BUYERSIGNER", "DealSheet.ContractOrMemo.Buyer.Signer"))
         _fileConfigures.Add(file)
 
         'Deed 
@@ -800,10 +802,34 @@ Public Class DocumentGenerator
         file.PlaceHolders.Add(New DocumentPlaceHolder("LOT"))
         file.PlaceHolders.Add(New DocumentPlaceHolder("DAY"))
         file.PlaceHolders.Add(New DocumentPlaceHolder("MONTH"))
+        file.PlaceHolders.Add(New DocumentPlaceHolder("YEAR"))
         file.PlaceHolders.Add(New DocumentPlaceHolder("SELLERNAMES", Function(data As JObject)
                                                                          Dim names = data.SelectToken("DealSheet.ContractOrMemo.Sellers").Select(Function(s) s.SelectToken("Name").ToString).Where(Function(s) Not String.IsNullOrEmpty(s)).ToArray
                                                                          Return String.Join(" & ", names)
                                                                      End Function))
+        _fileConfigures.Add(file)
+
+        'Restrictive declaration
+        file = New GenerateFileConfig With {.FileName = "RestrictiveDeclaration.docx", .ConfigKey = "RestrictiveDeclaration"}
+        phs = {
+            New DocumentPlaceHolder("DAY"),
+            New DocumentPlaceHolder("MONTH"),
+            New DocumentPlaceHolder("YEAR"),
+            New DocumentPlaceHolder("BLOCK"),
+            New DocumentPlaceHolder("LOT"),
+            New DocumentPlaceHolder("SELLERNAMES", Function(data As JObject)
+                                                       Dim names = data.SelectToken("DealSheet.ContractOrMemo.Sellers").Select(Function(s) s.SelectToken("Name").ToString).Where(Function(s) Not String.IsNullOrEmpty(s)).ToArray
+                                                       Return String.Join(" & ", names)
+                                                   End Function),
+            New DocumentPlaceHolder("SELLERADDRESS", "DealSheet.ContractOrMemo.Sellers[0].Address"),
+            New DocumentPlaceHolder("BUYERNAME", "DealSheet.ContractOrMemo.Buyer.CorpName"),
+            New DocumentPlaceHolder("BUYERADDRESS", "DealSheet.ContractOrMemo.Buyer.Address"),
+            New DocumentPlaceHolder("PROPERTYADDRESS", "PropertyAddress"),
+            New DocumentPlaceHolder("SELLER1NAME", "DealSheet.ContractOrMemo.Sellers[0].Name"),
+            New DocumentPlaceHolder("SELLER2NAME", "DealSheet.ContractOrMemo.Sellers[1].Name"),
+            New DocumentPlaceHolder("SELLER3NAME", "DealSheet.ContractOrMemo.Sellers[2].Name")
+            }
+        file.PlaceHolders = phs.ToList
         _fileConfigures.Add(file)
 
         'Acris info

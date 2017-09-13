@@ -171,7 +171,49 @@ Namespace PublicController
                 Throw ex
             End Try
         End Function
+
+        <Route("api/dataservice/assignleads/")>
+        Function PostAssignLeads(batch As LeadsAssignedBatch) As IHttpActionResult
+            Try
+                Dim result = PendingAssignLead.AssignedBatch(batch)
+                Return Ok(result)
+            Catch ex As Exception
+                Throw ex
+            End Try
+        End Function
+
+        <Route("api/dataservice/assignleads/{id}")>
+        Function GetAssignLeadsStatus(id As String) As IHttpActionResult
+            Try
+                Dim result = PendingAssignLead.GetBatchStatus(id)
+                Return Ok(result)
+            Catch ex As Exception
+                Throw ex
+            End Try
+        End Function
+
+        <Route("api/dataservice/leadsportalstatus/")>
+        Function PostPortalStatus(bbles As List(Of String)) As IHttpActionResult
+            Try
+                Dim result = Lead.GetLeadsPortalStatus(bbles)
+                Return Ok(result)
+            Catch ex As Exception
+                Throw ex
+            End Try
+        End Function
+
+        <Route("api/dataservice/remotequery/")>
+        Function PostRemoteLeadsQuery(<FromBody> query As String) As IHttpActionResult
+            Try
+                Dim result = RemoteLeadsQuery.QueryResult(query)
+                Return Ok(result)
+            Catch ex As Exception
+                Throw ex
+            End Try
+        End Function
     End Class
+
+
 
 End Namespace
 

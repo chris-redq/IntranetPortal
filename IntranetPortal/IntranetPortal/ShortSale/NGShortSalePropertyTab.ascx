@@ -278,7 +278,7 @@
 </div>
 
 
-<script src="/bower_components/editable-table/mindmup-editabletable.js"></script>
+<%--<script src="/bower_components/editable-table/mindmup-editabletable.js"></script>--%>
 <script>
     function onRefreashDone() {
         //$("#home_breakdown_table").editableTableWidget();

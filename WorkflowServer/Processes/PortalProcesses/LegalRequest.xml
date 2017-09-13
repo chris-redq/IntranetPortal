@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Process Name="LegalRequest">
+  <DataFields>
+    <DataField Name="Result" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+    <DataField Name="Mgr" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+    <DataField Name="Attorney" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+    <DataField Name="ResearchUser" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+    <DataField Name="BBLE" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+    <DataField Name="ProcessData" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+  </DataFields>
+  <Lines>
+    <Line Name="Initial" From="Start" To="ManagerPreview" CodeRule="DefaultLineRule">
+    </Line>
+    <Line Name="SendtoResearh" From="ManagerPreview" To="LegalResearch" CodeRule="DefaultLineRule">
+    </Line>
+    <Line Name="ResearchFinish" From="LegalResearch" To="ManagerAssign" CodeRule="DefaultLineRule">
+    </Line>
+    <Line Name="BackToResearch" From="ManagerAssign" To="LegalResearch" CodeRule="BackToRearchRule">
+    </Line>
+    <Line Name="AssignToAttorney" From="ManagerAssign" To="AttorneyHandle" CodeRule="AssignToAttorneyRule">
+    </Line>
+    <Line Name="CaseClosed" From="AttorneyHandle" To="Closed" CodeRule="DefaultLineRule">
+    </Line>
+  </Lines>
+  <Activities>
+    <Activity Name="Start" IsInitial="True">
+    </Activity>
+    <Activity Name="ManagerPreview">
+      <Rules>
+        <DestinationRule>
+          <Destination Type="User" Name="123" CodeRule="ManagerPreviewDestinationRule" ></Destination>
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ClientEvent Name="eventName" Order="1" EventAction="ManagerPreviewClientEvent">
+        </ClientEvent>
+      </Events>
+    </Activity>
+    <Activity Name="LegalResearch">
+      <Rules>
+        <DestinationRule>
+          <Destination Type="User" Name="123" CodeRule="LegalResearchDestinationRule" ></Destination>
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ClientEvent Name="eventName" Order="1" EventAction="LegalResearchClientEvent">
+        </ClientEvent>
+      </Events>
+    </Activity>
+    <Activity Name="ManagerAssign">
+      <Rules>
+        <DestinationRule>
+          <Destination Type="User" Name="123" CodeRule="ManagerAssignDestinationRule" ></Destination>
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ClientEvent Name="eventName" Order="1" EventAction="ManagerAssignClientEvent">
+        </ClientEvent>
+      </Events>
+    </Activity>
+    <Activity Name="AttorneyHandle">
+      <Rules>
+        <DestinationRule>
+          <Destination Type="User" Name="123" CodeRule="AttorneyHandleDestinationRule" ></Destination>
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ClientEvent Name="eventName" Order="1" EventAction="AttorneyHandleClientEvent">
+        </ClientEvent>
+      </Events>
+    </Activity>
+    <Activity Name="Closed">
+      <Rules>
+        <DestinationRule>
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ServerEvent Name="Closed" Type="Server" Order="1" EventAction="ClosedEvent">
+        </ServerEvent>
+      </Events>
+    </Activity>
+  </Activities>
+  
+  <Actions>    
+    <Action Name="DefaultLineRule">
+      <ExecuteMethod Type="PortalProcesses.LegalRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="DefaultLineRule">
+      </ExecuteMethod>
+    </Action>
+    
+    <Action Name="ManagerPreviewDestinationRule">
+      <ExecuteMethod Type="PortalProcesses.LegalRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="ManagerPreviewDestinationRule">     
+      </ExecuteMethod>
+    </Action>
+    <Action Name="ManagerPreviewClientEvent">
+      <ExecuteMethod Type="PortalProcesses.LegalRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="ManagerPreviewClientEvent">      
+      </ExecuteMethod>
+    </Action>
+    
+    <Action Name="LegalResearchDestinationRule">
+      <ExecuteMethod Type="PortalProcesses.LegalRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="LegalResearchDestinationRule">
+      </ExecuteMethod>
+    </Action>
+    <Action Name="LegalResearchClientEvent">
+      <ExecuteMethod Type="PortalProcesses.LegalRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="LegalResearchClientEvent">
+      </ExecuteMethod>
+    </Action>
+    
+    <Action Name="ManagerAssignDestinationRule">
+      <ExecuteMethod Type="PortalProcesses.LegalRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="ManagerAssignDestinationRule">
+      </ExecuteMethod>
+    </Action>
+    <Action Name="ManagerAssignClientEvent">
+      <ExecuteMethod Type="PortalProcesses.LegalRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="ManagerAssignClientEvent">
+      </ExecuteMethod>
+    </Action>
+
+    <Action Name="AttorneyHandleDestinationRule">
+      <ExecuteMethod Type="PortalProcesses.LegalRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="AttorneyHandleDestinationRule">
+      </ExecuteMethod>
+    </Action>
+    <Action Name="AttorneyHandleClientEvent">
+      <ExecuteMethod Type="PortalProcesses.LegalRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="AttorneyHandleClientEvent">
+      </ExecuteMethod>
+    </Action>
+      
+    <Action Name="ClosedEvent">
+      <ExecuteMethod Type="PortalProcesses.LegalRequestAction, PortalProcesses, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="ClosedEvent">      
+      </ExecuteMethod>
+    </Action>
+  </Actions>
+</Process>

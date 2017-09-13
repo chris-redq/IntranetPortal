@@ -143,6 +143,7 @@ Public Class PortalStatus
     Protected Sub btnCommonData_Click(sender As Object, e As EventArgs)
         Core.CommonData.RefreshData()
         PropertyMortgage.RefreshMortgageStatusData()
+        PortalNavManage.clear()
     End Sub
 
     Protected Sub gridSettings_DataBinding(sender As Object, e As EventArgs)

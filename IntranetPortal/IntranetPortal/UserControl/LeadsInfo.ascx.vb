@@ -33,7 +33,6 @@ Public Class LeadsInfo1
                 Else
                     doorKnockMapPanel.Visible = False
                 End If
-
             End If
 
             If Not ShowLogPanel Then
@@ -348,6 +347,14 @@ Public Class LeadsInfo1
                 Dim contact = Context.HomeOwnerPhones.Where(Function(c) c.BBLE = hfBBLE.Value And c.Phone = phone).FirstOrDefault()
                 If (contact IsNot Nothing) Then
                     contact.Comment = comment
+                Else
+                    Dim hp = New HomeOwnerPhone
+                    hp.BBLE = hfBBLE.Value
+                    'hp.OwnerName = ownerName
+                    hp.Phone = phone
+                    hp.Source = PhoneSource.TLOLocateReport
+                    hp.Comment = comment
+                    Context.HomeOwnerPhones.Add(hp)
                 End If
 
                 Context.SaveChanges()

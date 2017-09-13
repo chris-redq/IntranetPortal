@@ -265,7 +265,7 @@ Public Class LeadsSubMenu
                                         "<td style=""font-style: italic;font-weight:600;"">{0}</td></tr>" &
                                         "<tr><td>Description:</td><td style=""font-style: italic;font-weight:600;"">{1}</td></tr>" &
                                         "</table>", reason, description)
-            If emp.Position = "Finder" Then
+            If emp.Position = "Finder" AndAlso cbDeadReasons.Value = 6 Then
                 Dim taskData = New With {.Reason = cbDeadReasons.Value, .Description = description}
                 comments = String.Format("{0} want to dead this leads. Please approval.", createby) + comments
                 LeadManage.DeadLeadProcess.ProcessStart(hfBBLE.Value, taskData.ToJsonString, createby, comments, Employee.GetReportToManger(createby).Name)
@@ -291,7 +291,7 @@ Public Class LeadsSubMenu
                                         "<tr><td>Description:</td><td style=""font-style: italic;font-weight:600;"">{1}</td></tr>" &
                                         "</table>", reason, description)
 
-            If emp.Position = "Finder" Then
+            If emp.Position = "Finder" AndAlso cbDeadReasons.Value = 6 Then
                 Dim taskData = New With {.Reason = cbDeadReasons.Value, .Description = description}
                 comments = String.Format("{0} want to dead this leads. Please approval.", createby) + comments
                 LeadManage.DumpLeadProcess.ProcessStart(hfBBLE.Value, taskData.ToJsonString, createby, comments, Employee.GetReportToManger(createby).Name)

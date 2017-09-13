@@ -77,6 +77,7 @@ Partial Public Class Entities
     Public Overridable Property TLODatas() As DbSet(Of TLOData)
     Public Overridable Property HomeOwnerPhones() As DbSet(Of HomeOwnerPhone)
     Public Overridable Property PortalLisPens() As DbSet(Of PortalLisPen)
+    Public Overridable Property PortalLeadsViews() As DbSet(Of PortalLeadsView)
 
     Public Overridable Function UpdateEmployeeName(oldName As String, newName As String) As Integer
         Dim oldNameParameter As ObjectParameter = If(oldName IsNot Nothing, New ObjectParameter("OldName", oldName), New ObjectParameter("OldName", GetType(String)))
@@ -88,6 +89,12 @@ Partial Public Class Entities
 
     Public Overridable Function UploadSearchInfo2Portal() As Integer
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("UploadSearchInfo2Portal")
+    End Function
+
+    Public Overridable Function RemoteLeadsQuery(query As String) As ObjectResult(Of String)
+        Dim queryParameter As ObjectParameter = If(query IsNot Nothing, New ObjectParameter("query", query), New ObjectParameter("query", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of String)("RemoteLeadsQuery", queryParameter)
     End Function
 
 End Class

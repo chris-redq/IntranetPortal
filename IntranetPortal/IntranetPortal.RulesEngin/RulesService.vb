@@ -80,9 +80,9 @@ Public Class RulesService
 
             ' start the rules
             For Each Rule In Rules
-                Log("Inital Rule: " & Rule.RuleName)
+                Log("Initial Rule: " & Rule.RuleName)
                 RunTimer(Rule)
-                Log("Inital Rule (" & Rule.RuleName & ") Finished. ")
+                Log("Initial Rule (" & Rule.RuleName & ") Finished. ")
             Next
 
             Log("Service is Start")
@@ -105,7 +105,7 @@ Public Class RulesService
 
         'Rules.Add(New RecycleProcessRule() With {.ExecuteOn = TimeSpan.Parse("19:00:00"), .Period = TimeSpan.Parse("1.0:0:0"), .RuleName = "Recycle Leads"})
         'Rules.Add(New CompleteTaskRule() With {.ExecuteOn = TimeSpan.Parse("20:00:00"), .Period = TimeSpan.Parse("1.0:0:0"), .RuleName = "Complete Leads Task"})
-        'Rules.Add(New LeadsAndTaskRule() With {.ExecuteOn = TimeSpan.Parse("19:30:00"), .Period = TimeSpan.Parse("1.0:0:0"), .RuleName = "Leads business rule"})
+        Rules.Add(New LeadsAndTaskRule() With {.ExecuteOn = TimeSpan.Parse("19:30:00"), .Period = TimeSpan.Parse("1.0:0:0"), .RuleName = "Leads business rule"})
         Rules.Add(New AgentActivitySummaryRule() With {.ExecuteOn = TimeSpan.Parse("21:30:00"), .Period = TimeSpan.Parse("1.0:0:0"), .RuleName = "Team Activity Email Rule"})
 
         Rules.Add(New EmailSummaryRule() With {.ExecuteOn = TimeSpan.Parse("06:30:00"), .Period = TimeSpan.Parse("1.0:0:0"), .RuleName = "User Task Summary Rule"})

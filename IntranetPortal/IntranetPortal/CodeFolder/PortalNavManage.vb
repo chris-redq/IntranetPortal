@@ -7,6 +7,12 @@ Public Class PortalNavManage
     Private Shared _navItems As List(Of PortalNavItem)
     Private Shared _updateTime As DateTime
 
+    Public Shared Sub clear()
+        If _navItems IsNot Nothing Then
+            _navItems = Nothing
+        End If
+    End Sub
+
     ' get all menu
     Public Shared Function LoadMenuFromXml(context As HttpContext) As List(Of PortalNavItem)
         If _navItems Is Nothing OrElse _updateTime < DateTime.Now Then

@@ -110,9 +110,9 @@ angular.module("PortalApp").factory("ptUnderwriting", ["$http", "ptCom", '$q', '
                 var that = this;
                 if (this.serviceURL) return this.serviceURL;
                 $http({
-                    url: "/Webconfig.txt",
+                    url: "/api/underwriting/config",
                     method: "GET"
-                }).then(function (d) {
+                }).then(function (d) {                    
                     that.serviceURL = d.data["UnderwritingServiceServerClient"] + "/signalr";
                 })
             },
@@ -168,7 +168,7 @@ angular.module("PortalApp").factory("ptUnderwriting", ["$http", "ptCom", '$q', '
                 setTimeout(function () {
                     if (!that.proxy) console.log("Fail to init proxy");
                     clearInterval(proxyInterval);
-                }, 2000);
+                }, 10000);
             }
         }
 
@@ -274,7 +274,7 @@ angular.module("PortalApp").factory("ptUnderwriting", ["$http", "ptCom", '$q', '
             var that = this;
             return $q(function (resolve, reject) {
                 if (!bble) reject("BBLE cannot be blank.");
-                var username = ptCom.getCurrentUser();
+                //var username = ptCom.getCurrentUser();
                 var newData = underwriting.new();
                 newData.BBLE = bble;
                 newData.Status = 1;
