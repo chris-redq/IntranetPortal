@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MyIdealProp.Workflow.Core.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MyIdealProp.Workflow.Core.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ProcessInstance">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataFields" nillable="true" type="tns:ArrayOfDataFieldDefinitionWithValue" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Originator" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Priority" type="tns:ProcessInstance.ProcessPriority" />
+      <xs:element minOccurs="0" name="ProcessName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessInstance" nillable="true" type="tns:ProcessInstance" />
+  <xs:complexType name="ArrayOfDataFieldDefinitionWithValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataFieldDefinitionWithValue" nillable="true" type="tns:DataFieldDefinitionWithValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataFieldDefinitionWithValue" nillable="true" type="tns:ArrayOfDataFieldDefinitionWithValue" />
+  <xs:complexType name="DataFieldDefinitionWithValue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataFieldDefinition">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:anyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataFieldDefinitionWithValue" nillable="true" type="tns:DataFieldDefinitionWithValue" />
+  <xs:complexType name="DataFieldDefinition">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseDefinition">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataFieldDefinition" nillable="true" type="tns:DataFieldDefinition" />
+  <xs:complexType name="BaseDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseDefinition" nillable="true" type="tns:BaseDefinition" />
+  <xs:simpleType name="ProcessInstance.ProcessPriority">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Normal" />
+      <xs:enumeration value="Important" />
+      <xs:enumeration value="Urgent" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ProcessInstance.ProcessPriority" nillable="true" type="tns:ProcessInstance.ProcessPriority" />
+  <xs:complexType name="ArrayOfWorklistItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorklistItem" nillable="true" type="tns:WorklistItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWorklistItem" nillable="true" type="tns:ArrayOfWorklistItem" />
+  <xs:complexType name="WorklistItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActInstId" type="xs:int" />
+      <xs:element minOccurs="0" name="ActivityDestinationInstance" nillable="true" type="tns:ActivityDestinationInstance" />
+      <xs:element minOccurs="0" name="ActivityInstance" nillable="true" type="tns:ActivityInstance" />
+      <xs:element minOccurs="0" name="ActivityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DestinationSlot" nillable="true" type="tns:DestinationSlot" />
+      <xs:element minOccurs="0" name="EventInstId" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemData" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Originator" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Priority" type="tns:ProcessInstance.ProcessPriority" />
+      <xs:element minOccurs="0" name="ProcInstId" type="xs:int" />
+      <xs:element minOccurs="0" name="ProcSchemeDisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessDisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessInstance" nillable="true" type="tns:ProcessInstance" />
+      <xs:element minOccurs="0" name="ProcessName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="tns:WorklistItemStatu" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorklistItem" nillable="true" type="tns:WorklistItem" />
+  <xs:complexType name="ActivityDestinationInstance">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataFields" nillable="true" type="tns:ArrayOfDataFieldDefinitionWithValue" />
+      <xs:element minOccurs="0" name="DestinationUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Status" type="tns:ActivityStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityDestinationInstance" nillable="true" type="tns:ActivityDestinationInstance" />
+  <xs:simpleType name="ActivityStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Running" />
+      <xs:enumeration value="Active" />
+      <xs:enumeration value="Completed" />
+      <xs:enumeration value="Expired" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ActivityStatus" nillable="true" type="tns:ActivityStatus" />
+  <xs:complexType name="ActivityInstance">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Status" type="tns:ActivityStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityInstance" nillable="true" type="tns:ActivityInstance" />
+  <xs:complexType name="DestinationSlot">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DestinationUsers" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="SlotId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DestinationSlot" nillable="true" type="tns:DestinationSlot" />
+  <xs:simpleType name="WorklistItemStatu">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Avaiable" />
+      <xs:enumeration value="Open" />
+      <xs:enumeration value="Allocated" />
+      <xs:enumeration value="Completed" />
+      <xs:enumeration value="Expired" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="WorklistItemStatu" nillable="true" type="tns:WorklistItemStatu" />
+</xs:schema>

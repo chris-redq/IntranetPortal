@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/MyIdealProp.Workflow.Core.Model" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="CreateProcessInstance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateProcessInstanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MyIdealProp.Workflow.Core.Model" minOccurs="0" name="CreateProcessInstanceResult" nillable="true" type="q1:ProcessInstance" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartProcessInstance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MyIdealProp.Workflow.Core.Model" minOccurs="0" name="priority" type="q2:ProcessInstance.ProcessPriority" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="dataFields" nillable="true" type="q3:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartProcessInstanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MyIdealProp.Workflow.Core.Model" minOccurs="0" name="StartProcessInstanceResult" nillable="true" type="q4:ProcessInstance" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExpiredProcessInstance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procInstId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExpiredProcessInstanceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProcessInstancesByDataFields">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="value" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProcessInstancesByDataFieldsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetProcessInstancesByDataFieldsResult" nillable="true" type="q5:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkList">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MyIdealProp.Workflow.Core.Model" minOccurs="0" name="GetWorkListResult" nillable="true" type="q6:ArrayOfWorklistItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompleteWorkList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procInstId" type="xs:int" />
+        <xs:element minOccurs="0" name="actInstId" type="xs:int" />
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="datafields" nillable="true" type="q7:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompleteWorkListResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompleteDestInstWorklist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procInstId" type="xs:int" />
+        <xs:element minOccurs="0" name="actInstId" type="xs:int" />
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="datafields" nillable="true" type="q8:ArrayOfKeyValueOfstringanyType" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="actDataFields" nillable="true" type="q9:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompleteDestInstWorklistResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OpenWorkListItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procInstId" type="xs:int" />
+        <xs:element minOccurs="0" name="actInstId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OpenWorkListItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MyIdealProp.Workflow.Core.Model" minOccurs="0" name="OpenWorkListItemResult" nillable="true" type="q10:WorklistItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateWorklistItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procInstId" type="xs:int" />
+        <xs:element minOccurs="0" name="actInstId" type="xs:int" />
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="dataFields" nillable="true" type="q11:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateWorklistItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateWorklistItemResult" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GotoActivity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procInstId" type="xs:int" />
+        <xs:element minOccurs="0" name="actName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GotoActivityResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
