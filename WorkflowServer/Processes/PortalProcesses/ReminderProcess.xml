@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Process Name="ReminderProcess">
+  <DataFields>
+    <DataField Name="TaskId" Type="System.Int32" Scope="Process" DefaultValue="0"></DataField>
+    <DataField Name="Result" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+    <DataField Name="Mgr" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+    <DataField Name="BBLE" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+  </DataFields>
+  <Lines>
+    <Line Name="Initial" From="Start" To="ManagerApproval" CodeRule="LineRule1">
+    </Line>
+    <Line Name="MgrResend" From="ManagerApproval" To="ManagerApproval" CodeRule="MgrResend">
+    </Line>
+    <Line Name="Completed" From="ManagerApproval" To="Completed" CodeRule="Completed">
+    </Line>
+  </Lines>
+  <Activities>
+    <Activity Name="Start" IsInitial="True">
+    </Activity>
+    <Activity Name="ManagerApproval">
+      <Rules>       
+        <DestinationRule>
+          <Destination Type="User" Name="123" CodeRule="MgrDestinationRule" ></Destination>
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ClientEvent Name="eventName" Order="1" EventAction="ManagerApproval">
+        </ClientEvent>
+      </Events>
+    </Activity>
+    <Activity Name="Completed">
+      <Rules>
+        <DestinationRule>
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ServerEvent Name="Approved" Type="Server" Order="1" EventAction="Approved">
+        </ServerEvent>
+      </Events>
+    </Activity>
+  </Activities>
+  <Actions>
+    <Action Name="LineRule1">
+      <ExecuteMethod Type="PortalProcesses.ReminderProcessAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="StartToMgrLineRule">
+      </ExecuteMethod>
+    </Action>
+    <Action Name = "MgrResend">
+      <ExecuteMethod Type="PortalProcesses.ReminderProcessAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="MgrResendLineRule">
+      </ExecuteMethod>
+    </Action>
+    <Action Name = "Completed">
+      <ExecuteMethod Type="PortalProcesses.ReminderProcessAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="CompletedLineRule">
+      </ExecuteMethod>
+    </Action>
+    <Action Name="MgrDestinationRule">
+      <ExecuteMethod Type="PortalProcesses.ReminderProcessAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="MgrDestinationRule">
+        <InputParameters>
+        </InputParameters>
+        <OutputParameters>
+        </OutputParameters>
+      </ExecuteMethod>
+    </Action>
+    <Action Name="ManagerApproval">
+      <ExecuteMethod Type="PortalProcesses.ReminderProcessAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="ManagerApproval">
+        <InputParameters>
+        </InputParameters>
+        <OutputParameters>
+        </OutputParameters>
+      </ExecuteMethod>
+    </Action>
+    <Action Name="Approved">
+      <ExecuteMethod Type="PortalProcesses.ReminderProcessAction, PortalProcesses, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="ProcessApproved">
+        <InputParameters>
+        </InputParameters>
+        <OutputParameters>
+        </OutputParameters>
+      </ExecuteMethod>
+    </Action>
+  </Actions>
+</Process>

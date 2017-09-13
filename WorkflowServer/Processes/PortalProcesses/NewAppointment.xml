@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Process Name="NewAppointmentRequest">
+  <DataFields>
+    <DataField Name="AppointmentId" Type="System.Int32" Scope="Process" DefaultValue="0"></DataField>
+    <DataField Name="Result" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+    <DataField Name="Mgr" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+    <DataField Name="BBLE" Type="System.String" Scope="Process" DefaultValue=""></DataField>
+  </DataFields>
+  <Lines>
+    <Line Name="Initial" From="Start" To="ManagerApproval" CodeRule="LineRule1">
+    </Line>
+    <Line Name="MgrApprove" From="ManagerApproval" To="Approved" CodeRule="LineRule2">
+    </Line>
+    <Line Name="MgrDecline" From="ManagerApproval" To="Declined" CodeRule="LineRule3">
+    </Line>
+    <Line Name="MgrApprove" From="ManagerApproval" To="Rescheduled" CodeRule="LineRescheduled">
+    </Line>
+  </Lines>
+  <Activities>
+    <Activity Name="Start" IsInitial="True">
+    </Activity>
+    <Activity Name="ManagerApproval">
+      <Rules>
+        <DestinationRule>
+          <Destination Type="User" Name="123" CodeRule="MgrDestinationRule" ></Destination>
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ClientEvent Name="eventName" Order="1" EventAction="ManagerApproval">
+        </ClientEvent>
+      </Events>
+    </Activity>
+    <Activity Name="Declined">
+      <Rules>
+      </Rules>
+      <Events>
+        <ServerEvent Name="Declined" Type="Server" Order="1" EventAction="Declined">
+        </ServerEvent>
+      </Events>
+    </Activity>
+    <Activity Name="Approved">
+      <Rules>
+        <DestinationRule>
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ServerEvent Name="Approved" Type="Server" Order="1" EventAction="Approved">
+        </ServerEvent>
+      </Events>
+    </Activity>
+    <Activity Name="Rescheduled">
+      <Rules>
+        <DestinationRule>
+        </DestinationRule>
+      </Rules>
+      <Events>
+        <ServerEvent Name="Approved" Type="Server" Order="1" EventAction="Approved">
+        </ServerEvent>
+      </Events>
+    </Activity>
+  </Activities>
+  <Actions>
+    <Action Name="LineRule1">
+      <ExecuteMethod Type="PortalProcesses.NewAppointmentAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="StartToMgrLineRule">
+      </ExecuteMethod>
+    </Action>
+    <Action Name = "LineRule2">
+      <ExecuteMethod Type="PortalProcesses.NewAppointmentAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="ApproveLineRule">
+      </ExecuteMethod>
+    </Action>
+    <Action Name = "LineRule3">
+      <ExecuteMethod Type="PortalProcesses.NewAppointmentAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="DeclineLineRule">        
+      </ExecuteMethod>
+    </Action>
+    <Action Name = "LineRescheduled">
+      <ExecuteMethod Type="PortalProcesses.NewAppointmentAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="RescheduledRule">
+      </ExecuteMethod>
+    </Action>
+    <Action Name = "LineRecheduled">
+      <ExecuteMethod Type="PortalProcesses.NewAppointmentAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="DeclineLineRule">
+       
+      </ExecuteMethod>
+    </Action>
+    <Action Name="MgrDestinationRule">
+      <ExecuteMethod Type="PortalProcesses.NewAppointmentAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="MgrDestinationRule">
+      
+      </ExecuteMethod>
+    </Action>
+    <Action Name="ManagerApproval">
+      <ExecuteMethod Type="PortalProcesses.NewAppointmentAction, PortalProcesses, Version=1.0.0.0, Culture=neutral, PublicKeyToken = null" MethodName="ManagerApproval">
+    
+      </ExecuteMethod>
+    </Action>
+    <Action Name="Approved">
+      <ExecuteMethod Type="PortalProcesses.NewAppointmentAction, PortalProcesses, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="ProcessApproved">
+      
+      </ExecuteMethod>
+    </Action>
+    <Action Name="Declined">
+      <ExecuteMethod Type="PortalProcesses.NewAppointmentAction, PortalProcesses, Version=1.0.0.0, Culture=neutral,PublicKeyToken=null" MethodName="ProcessDeclined">
+      
+      </ExecuteMethod>
+    </Action>
+  </Actions>
+</Process>
